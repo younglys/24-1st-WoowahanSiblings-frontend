@@ -4,7 +4,6 @@
 
   .firstLayout {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     margin-top: 20px;
 
@@ -22,11 +21,11 @@
         }
       }
     }
+
     .signUpList {
       display: flex;
-      flex-direction: row;
 
-      .signUpList1 {
+      .signUpListOne {
         list-style: none;
         margin: 0px 10px 0 0;
 
@@ -42,7 +41,7 @@
         }
       }
 
-      .signUpList2 {
+      .signUpListTwo {
         list-style: none;
         margin: 0px 10px 0 0;
 
@@ -58,7 +57,6 @@
   .secondLayout {
     display: flex;
     justify-content: center;
-    margin-top: -15px;
 
     img {
       width: 103px;
@@ -68,13 +66,11 @@
 
   .thirdLayout {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin: 0 auto;
 
     .allCategorie {
       display: flex;
-      flex-direction: row;
 
       li {
         position: relative;
@@ -95,66 +91,14 @@
           }
         }
 
-        .cateLayout {
-          a {
-            text-decoration: none;
-            color: black;
-            font-size: 17px;
-
-            i {
-              margin-right: 10px;
-            }
-
-            span {
-              margin-right: 5px;
-            }
-          }
-          .layoutMenuNone {
-            display: none;
-          }
-
-          .layoutMenu {
-            position: absolute;
-            width: 395px;
-
-            .menuDown {
-              border: 1px solid rgb(246, 246, 246);
-
-              .menuDownList {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                li {
-                  font-size: 17px;
-                  margin-top: 15px;
-                  margin-bottom: 26px;
-                  margin-left: 10px;
-                  font-family: "STIX Two Math", serif;
-
-                  .menuNextListNone {
-                    display: none;
-                  }
-                  .menuNextList {
-                    display: flex;
-                    flex-direction: column;
-                    color: black;
-                    margin-right: 10px;
-                    background-color: rgb(246, 246, 246);
-                    text-align: center;
-
-                    transition: all 0.3s;
-                  }
-                }
-              }
-            }
-          }
+        .downBoxNone {
+          display: none;
         }
       }
     }
 
-    .thirdLayout_icon {
+    .thirdLayoutIcon {
       display: flex;
-      flex-direction: row;
 
       .searchBar {
         margin-right: 33px;
