@@ -77,10 +77,10 @@
       flex-direction: row;
 
       li {
+        position: relative;
         list-style: none;
         margin-right: 58px;
         font-family: noto sans, malgun gothic, AppleGothic, dotum;
-
         a {
           text-decoration: none;
           color: black;
@@ -92,6 +92,61 @@
 
           span {
             margin-right: 5px;
+          }
+        }
+
+        .cateLayout {
+          a {
+            text-decoration: none;
+            color: black;
+            font-size: 17px;
+
+            i {
+              margin-right: 10px;
+            }
+
+            span {
+              margin-right: 5px;
+            }
+          }
+          .layoutMenuNone {
+            display: none;
+          }
+
+          .layoutMenu {
+            position: absolute;
+            width: 395px;
+
+            .menuDown {
+              border: 1px solid rgb(246, 246, 246);
+
+              .menuDownList {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                li {
+                  font-size: 17px;
+                  margin-top: 15px;
+                  margin-bottom: 26px;
+                  margin-left: 10px;
+                  font-family: "STIX Two Math", serif;
+
+                  .menuNextListNone {
+                    display: none;
+                  }
+                  .menuNextList {
+                    display: flex;
+                    flex-direction: column;
+                    color: black;
+                    margin-right: 10px;
+                    background-color: rgb(246, 246, 246);
+                    text-align: center;
+
+                    transition: all 0.3s;
+                  }
+                }
+              }
+            }
           }
         }
       }

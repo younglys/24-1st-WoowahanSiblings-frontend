@@ -1,8 +1,55 @@
 import React, { Component } from "react";
+import Navdropmenu from "./Navdropmenu";
 import "./Nav.scss";
 
 export default class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemList: [],
+      isMouseHoverEvent: false,
+      isMouseHoverNextEvent: false,
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3000/data/navmockdata.json", {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(itemListData => {
+        this.setState({
+          itemList: itemListData,
+        });
+      });
+  }
+
+  downBoxEvent = () => {
+    if (this.state.isMouseHoverEvent === false) {
+      this.setState({
+        isMouseHoverEvent: true,
+      });
+    } else if (this.state.isMouseHoverEvent === true) {
+      this.setState({
+        isMouseHoverEvent: false,
+      });
+    }
+  };
+
+  nextBoxNext = () => {
+    if (this.state.isMouseHoverNextEvent === false) {
+      this.setState({
+        isMouseHoverNextEvent: true,
+      });
+    } else if (this.state.isMouseHoverNextEvent === true) {
+      this.setState({
+        isMouseHoverNextEvent: false,
+      });
+    }
+  };
+
   render() {
+    console.log(this.state.itemList);
     return (
       <nav className="navLayout">
         <div className="firstLayout">
@@ -36,11 +83,34 @@ export default class Nav extends Component {
         </div>
         <div className="thirdLayout">
           <ul className="allCategorie">
-            <li>
-              <a href="#">
-                <i class="fas fa-bars"></i>
-                <span>전체 카테고리</span>
-              </a>
+            <li onMouseLeave={this.downBoxEvent}>
+              <div className="cateLayout">
+                <a href="#">
+                  <i class="fas fa-bars"></i>
+                  <span>전체 카테고리</span>
+                </a>
+                <div
+                  className={
+                    this.state.isMouseHoverEvent
+                      ? "layoutMenu"
+                      : "layoutMenuNone"
+                  }
+                >
+                  <div className="menuDown">
+                    <ul className="menuDownList">
+                      {this.state.itemList.map(listitem => {
+                        return (
+                          <Navdropmenu
+                            list={listitem.list}
+                            key={listitem.id}
+                            item={listitem.item}
+                          />
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </li>
             <li>
               <a href="#">신상품</a>
