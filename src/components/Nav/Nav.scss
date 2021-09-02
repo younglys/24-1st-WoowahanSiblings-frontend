@@ -76,7 +76,6 @@
         position: relative;
         list-style: none;
         margin-right: 58px;
-        font-family: noto sans, malgun gothic, AppleGothic, dotum;
         a {
           text-decoration: none;
           color: black;
@@ -90,9 +89,24 @@
             margin-right: 5px;
           }
         }
-
-        .downBoxNone {
-          display: none;
+        .dropDownMenu {
+          position: absolute;
+          width: 320px;
+          div {
+            font-size: 15px;
+            line-height: 1.6;
+          }
+          ul {
+            position: absolute;
+            left: 150px;
+            top: 0;
+            height: 473px;
+            li {
+              font-size: 15px;
+              line-height: 1.6;
+              margin: 0;
+            }
+          }
         }
       }
     }
