@@ -1,0 +1,137 @@
+.happyCenter {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  .happy {
+    padding: 50px 0;
+    color: rgb(91, 91, 91);
+    border-top: 1px solid #ddd;
+
+    .tit {
+      padding: 40px 0;
+      font-size: 28px;
+    }
+
+    .emph {
+      font-size: 18px;
+    }
+
+    p {
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-between;
+
+      li {
+        width: 300px;
+
+        .tit {
+          height: 20px;
+          margin: 30px 0;
+          padding-left: 20px;
+          color: rgb(86, 0, 125);
+          border-left: 3px solid rgb(86, 0, 125);
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .sub {
+          padding-bottom: 15px;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+
+        .expend {
+          padding-bottom: 50px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .happyUnfold {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+
+    .fstLeft {
+      display: flex;
+      align-items: center;
+    }
+
+    .tit {
+      padding: 20px 50px;
+      color: rgb(86, 0, 125);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .sub {
+      font-size: 16px;
+    }
+
+    .fstRight {
+      margin-right: 20px;
+
+      a {
+        text-decoration: none;
+
+        .txt {
+          font-size: 18px;
+        }
+
+        i {
+          padding-left: 20px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .happyFaqList {
+    padding: 20px 30px;
+
+    .happyFaq {
+      display: flex;
+      padding: 40px 0;
+      border-top: 1px solid #ddd;
+
+      .item {
+        width: 300px;
+        font-size: 17px;
+      }
+
+      .refund {
+        display: flex;
+        flex-direction: column;
+
+        .desc {
+          line-height: 1.5;
+          padding: 0;
+
+          .tit {
+            display: inline-block;
+            padding: 0;
+            padding-bottom: 10px;
+            color: rgb(86, 0, 125);
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .happyFaq:first-child {
+      border-top: none;
+    }
+  }
+
+  .close {
+    display: none;
+  }
+}

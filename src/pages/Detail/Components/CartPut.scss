@@ -1,0 +1,178 @@
+.cartPut {
+  display: flex;
+  justify-content: center;
+
+  .cartPutImg {
+    width: 430px;
+    height: 550px;
+  }
+
+  .innerView {
+    padding-left: 50px;
+    line-height: 1.5;
+  }
+
+  .goodsName {
+    padding: 20px 0;
+
+    .name {
+      display: block;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .shortDesc {
+      line-height: 2;
+      color: grey;
+      font-size: 15px;
+    }
+  }
+
+  .priceInfo {
+    display: block;
+
+    .dcInfo {
+      display: block;
+    }
+
+    .dcPrice {
+      font-size: 25px;
+
+      .won {
+        font-size: 20px;
+      }
+    }
+
+    .dcPercent {
+      padding-left: 8px;
+      color: #fa622f;
+      font-size: 25px;
+    }
+
+    .price {
+      display: block;
+      color: grey;
+      text-decoration: line-through;
+      font-size: 20px;
+
+      .won {
+        color: grey;
+      }
+    }
+
+    .notLogin {
+      display: inline-block;
+      padding: 10px 0;
+      color: rgb(86, 0, 125);
+      font-size: 15px;
+    }
+  }
+
+  .goodsBenefit {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+    border: 1px solid rgb(86, 0, 125);
+    border-radius: 8px;
+    font-size: 15px;
+
+    .benefit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .benefitBtn {
+        text-decoration: none;
+      }
+    }
+  }
+  .goodsInfo {
+    margin-top: 15px;
+
+    .infoList {
+      display: flex;
+      padding-top: 15px;
+      font-size: 15px;
+
+      .tit {
+        width: 130px;
+      }
+
+      .wrapper {
+        .smallDesc {
+          display: block;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .total {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 50px;
+
+    .totalPrice {
+      text-align: end;
+
+      .text {
+        font-size: 15px;
+      }
+
+      .price {
+        margin: 0 10px;
+        font-size: 30px;
+        font-weight: 800;
+      }
+
+      .won {
+        font-size: 20px;
+      }
+
+      .totalDesc {
+        margin: 10px 0;
+
+        .saveBtn {
+          margin-right: 15px;
+          border-radius: 10px;
+          padding: 3px 8px;
+          color: white;
+          background-color: #ffbf00;
+          border: 1px solid #ffbf00;
+          font-size: 12px;
+        }
+
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .cartBtn {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      padding: 15px 0;
+      border-radius: 5px;
+      border-style: none;
+      font-size: 16px;
+    }
+
+    .restock {
+      width: 150px;
+      color: rgb(222, 222, 222);
+      background-color: white;
+      border: 1px solid rgb(222, 222, 222);
+    }
+
+    .toCart {
+      width: 350px;
+      margin-left: 30px;
+      color: white;
+      background-color: rgb(86, 0, 125);
+    }
+  }
+}

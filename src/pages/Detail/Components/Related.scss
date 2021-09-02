@@ -1,0 +1,49 @@
+.goodsRelated {
+  margin-top: 35px;
+
+  .relatedLine {
+    width: 20px;
+    height: 5px;
+    background-color: black;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 0;
+  }
+
+  .relatedList {
+    display: flex;
+    padding: 15px 0;
+
+    .relatedArrow {
+      background-color: transparent;
+      border: 1px solid transparent;
+      font-size: 20px;
+    }
+
+    .relatedItem {
+      margin: 0 10px;
+      border: 1px solid rgb(222, 211, 211);
+
+      img {
+        width: 170px;
+        height: 230px;
+      }
+
+      .itemInfo {
+        padding: 10px;
+
+        .itemTitle {
+          font-size: 16px;
+          padding-bottom: 20px;
+        }
+
+        .itemPrice {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
