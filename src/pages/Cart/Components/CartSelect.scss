@@ -1,0 +1,19 @@
+.CartSelect {
+  width: 750px;
+  height: 60px;
+  line-height: 60px;
+  .check {
+    width: 250px;
+    font-size: 18px;
+    i {
+      padding-right: 10px;
+    }
+    .line {
+      display: inline-block;
+      margin: 0 20px;
+      width: 1px;
+      height: 15px;
+      background-color: grey;
+    }
+  }
+}
