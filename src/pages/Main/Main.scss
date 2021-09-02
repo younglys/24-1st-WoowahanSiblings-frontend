@@ -4,6 +4,36 @@
 
   .adList {
     margin-top: 15px;
+
+    .adBanner {
+      position: relative;
+
+      .leftArrow {
+        width: 52px;
+        height: 52px;
+        left: 13%;
+        position: absolute;
+        top: 40%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .rightArrow {
+        width: 52px;
+        height: 52px;
+        right: 13%;
+        position: absolute;
+        top: 40%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 
   .productList {
