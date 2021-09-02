@@ -4,7 +4,7 @@ import "./CartSelect.scss";
 export default class CartSelect extends Component {
   render() {
     return (
-      <div className="CartSelect">
+      <div className="cartSelect">
         <label className="check">
           <i className="fas fa-check-circle" />
           전체선택 (1 /1 )<span className="line" />

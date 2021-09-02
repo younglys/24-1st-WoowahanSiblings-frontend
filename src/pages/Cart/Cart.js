@@ -5,7 +5,7 @@ import "./Cart.scss";
 export default class Cart extends Component {
   render() {
     return (
-      <div className="Cart">
+      <div className="cart">
         <div className="titPage">장바구니</div>
         <div className="cartContent">
           <div className="cartItemList">
@@ -53,8 +53,8 @@ export default class Cart extends Component {
                     0<span className="won">원</span>
                   </span>
                 </li>
-                <div className="line"></div>
-                <li className="orderInfo">
+
+                <li className="orderInfo payment">
                   <span className="tit">결제예정금액</span>
                   <span className="price">
                     0<span className="won">원</span>
