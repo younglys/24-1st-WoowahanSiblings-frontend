@@ -1,0 +1,88 @@
+.login {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  main {
+    width: 280px;
+    margin: 0 auto;
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+
+        &::placeholder {
+          color: #cccccc;
+          font-size: 10px;
+        }
+
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .loginSub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0 30px 0;
+      font-size: 12px;
+      text-align: center;
+
+      .secureCheck {
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+      }
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+        padding: 10px 0;
+        border: 1px solid #5f0080;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .loginBtn {
+        margin-bottom: 10px;
+        color: #ffffff;
+        background-color: #5f0080;
+      }
+
+      .signUpBtn {
+        padding: 10px 0;
+        color: #5f0080;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .findId,
+  .findPw {
+    color: #000000;
+    font-size: 10px;
+    text-decoration: none;
+  }
+
+  .findId::after {
+    content: " | ";
+  }
+}
