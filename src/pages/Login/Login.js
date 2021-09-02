@@ -6,11 +6,21 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <main>
-          <h2>로그인</h2>
-          <form method="post">
-            <input type="text" placeholder="아이디를 입력해주세요" />
-            <input type="password" placeholder="비밀번호를 입력해주세요" />
+        <main className="loginMain">
+          <h1 className="loginTitle">로그인</h1>
+          <form method="post" className="loginForm">
+            <input
+              type="text"
+              name="id"
+              className="loginInput inputId"
+              placeholder="아이디를 입력해주세요"
+            />
+            <input
+              type="password"
+              name="password"
+              className="loginInput"
+              placeholder="비밀번호를 입력해주세요"
+            />
           </form>
           <div className="loginSub">
             <div className="secureCheck">
