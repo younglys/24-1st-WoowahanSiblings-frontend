@@ -1,0 +1,22 @@
+.relatedItem {
+  margin: 0 10px;
+  border: 1px solid rgb(222, 211, 211);
+
+  img {
+    width: 170px;
+    height: 230px;
+  }
+
+  .itemInfo {
+    padding: 10px;
+
+    .itemTitle {
+      font-size: 16px;
+      padding-bottom: 20px;
+    }
+
+    .itemPrice {
+      font-size: 14px;
+    }
+  }
+}

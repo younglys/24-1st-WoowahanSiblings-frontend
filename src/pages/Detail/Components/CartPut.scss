@@ -28,44 +28,36 @@
     }
   }
 
-  .priceInfo {
-    display: block;
+  .dcPrice {
+    font-size: 25px;
 
-    .dcInfo {
-      display: block;
-    }
-
-    .dcPrice {
-      font-size: 25px;
-
-      .won {
-        font-size: 20px;
-      }
-    }
-
-    .dcPercent {
-      padding-left: 8px;
-      color: #fa622f;
-      font-size: 25px;
-    }
-
-    .price {
-      display: block;
-      color: grey;
-      text-decoration: line-through;
+    .won {
       font-size: 20px;
-
-      .won {
-        color: grey;
-      }
     }
+  }
 
-    .notLogin {
-      display: inline-block;
-      padding: 10px 0;
-      color: rgb(86, 0, 125);
-      font-size: 15px;
+  .dcPercent {
+    padding-left: 8px;
+    color: #fa622f;
+    font-size: 25px;
+  }
+
+  .price {
+    display: block;
+    color: grey;
+    text-decoration: line-through;
+    font-size: 20px;
+
+    .won {
+      color: grey;
     }
+  }
+
+  .notLogin {
+    display: inline-block;
+    padding: 10px 0;
+    color: rgb(86, 0, 125);
+    font-size: 15px;
   }
 
   .goodsBenefit {
@@ -90,7 +82,8 @@
   .goodsInfo {
     margin-top: 15px;
 
-    .infoList {
+    .infoList,
+    .orderQuantity {
       display: flex;
       padding-top: 15px;
       font-size: 15px;
@@ -101,7 +94,6 @@
 
       .wrapper {
         .smallDesc {
-          display: block;
           font-size: 14px;
         }
       }
@@ -120,14 +112,20 @@
         font-size: 15px;
       }
 
-      .price {
-        margin: 0 10px;
-        font-size: 30px;
-        font-weight: 800;
-      }
+      .orderPrice {
+        display: flex;
+        justify-content: flex-end;
 
-      .won {
-        font-size: 20px;
+        .price {
+          margin: 0 10px;
+          font-size: 30px;
+          font-weight: 800;
+        }
+
+        .won {
+          font-size: 20px;
+          line-height: 2;
+        }
       }
 
       .totalDesc {
@@ -150,7 +148,7 @@
     }
   }
 
-  .cartBtn {
+  .btnContainer {
     display: flex;
     justify-content: flex-end;
 

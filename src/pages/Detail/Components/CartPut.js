@@ -1,31 +1,33 @@
 import React, { Component } from "react";
+import CalculateAmount from "../../../components/CalculateAmount/CalculateAmount";
 import "./CartPut.scss";
 
 class CartPut extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: this.props.name };
+  }
+
   render() {
     return (
       <div className="cartPut">
         <img
           className="cartPutImg"
           src="https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
-          alt="과일"
+          alt="상품 이미지"
         />
         <div className="innerView">
           <p className="goodsName">
-            <strong className="name">
-              저탄소 GAP 백도 복숭아 1.8kg 내외(5~7입)
-            </strong>
+            <strong className="name">{this.props.name}</strong>
             <span className="shortDesc">부드러운 과육 속 짙은 달콤함</span>
           </p>
-          <p className="priceInfo">
-            <span className="dcInfo">회원할인가</span>
+          <div className="priceInfo">
+            <p className="dcInfo">회원할인가</p>
             <span className="dcPrice">
               17,550
               <span className="won">원</span>
             </span>
-            <span className="dcPercent">
-              5<span className="per">%</span>
-            </span>
+            <span className="dcPercent">5%</span>
             <a className="price" href="/">
               19,000
               <span className="won">원</span>
@@ -33,7 +35,7 @@ class CartPut extends Component {
             <span className="notLogin">
               <span>로그인 후, 회원할인가와 적립혜택이 제공됩니다.</span>
             </span>
-          </p>
+          </div>
           <div className="goodsBenefit">
             <div className="benefit">
               <a className="benefitBtn" href="/">
@@ -63,9 +65,9 @@ class CartPut extends Component {
               <dt className="tit">포장타입</dt>
               <div className="wrapper">
                 <dd className="desc">냉장/종이포장</dd>
-                <span className="smallDesc">
+                <p className="smallDesc">
                   택배배송은 에코포장이 스티로폼으로 대체됩니다.
-                </span>
+                </p>
               </div>
             </dl>
             <dl className="infoList">
@@ -83,34 +85,39 @@ class CartPut extends Component {
               <dt className="tit">안내사항</dt>
               <dd className="desc">
                 <div className="wrapper">
-                  <span className="smallDesc">
+                  <p className="smallDesc">
                     -상품 특성상 3% 내외의 중량차이가 있을 수 있습니다.
-                  </span>
-                  <span className="smallDesc">
+                  </p>
+                  <p className="smallDesc">
                     -신선식품 특성상 원물마다 크기 및 형태가 일정하지 않을 수
                     있습니다.
-                  </span>
+                  </p>
                 </div>
               </dd>
             </dl>
-            <dl className="infoList">
+            <dl className="orderQuantity">
               <dt className="tit">구매수량</dt>
-              <dd className="desc">국산</dd>
+              <div className="oderQuantity">
+                <CalculateAmount />
+              </div>
             </dl>
           </div>
 
           <div className="total">
             <div className="totalPrice">
               <span className="text">총 상품 금액 :</span>
-              <span className="price">45,000</span>
-              <span className="won">원</span>
+              <p className="orderPrice">
+                <span className="price">45,000</span>
+                <span className="won">원</span>
+              </p>
+
               <div className="totalDesc">
                 <span className="saveBtn">적립</span>
                 <span>로그인 후, 적립혜택 제공</span>
               </div>
             </div>
           </div>
-          <div className="cartBtn">
+          <div className="btnContainer">
             <button type="button" className="restock">
               재입고 알림
             </button>

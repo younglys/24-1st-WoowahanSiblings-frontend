@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Related.scss";
+import "./RelatedItem.scss";
 
 class RelatedItem extends Component {
   render() {
