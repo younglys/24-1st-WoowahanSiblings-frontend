@@ -134,21 +134,29 @@
             display: flex;
             width: 400px;
 
-            .genderOption {
-              width: 33%;
+            .genderOptions {
+              width: 25%;
               margin-right: 30px;
 
               input[type="radio"] {
-                width: 30px;
+                width: 20px;
+              }
+
+              .genderOption {
+                font-size: 13px;
               }
             }
 
-            .additionOption {
+            .additionOptions {
               width: 50%;
               margin-bottom: 20px;
 
               input[type="radio"] {
-                width: 30px;
+                width: 20px;
+              }
+
+              .additionOption {
+                font-size: 13px;
               }
             }
           }

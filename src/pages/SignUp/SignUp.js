@@ -13,9 +13,15 @@ class SignUp extends Component {
   }
 
   handleShowInputCondition = e => {
-    const { showing } = this.state;
     this.setState({
-      showing: !showing,
+      showing: true,
+    });
+  };
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
     });
   };
 
@@ -38,6 +44,8 @@ class SignUp extends Component {
                       onClick={this.handleShowInputCondition}
                       onKeyPress={this.checkIdPass}
                       type="text"
+                      name="id"
+                      autoComplete="off"
                       placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                     />
                     <button type="button">중복확인</button>
@@ -58,6 +66,8 @@ class SignUp extends Component {
                     <input
                       onClick={this.handleShowInputCondition}
                       type="password"
+                      name="password"
+                      autoComplete="off"
                       placeholder="비밀번호를 입력해주세요"
                     />
                     {showing && (
@@ -81,6 +91,7 @@ class SignUp extends Component {
                     <input
                       onClick={this.handleShowInputCondition}
                       type="password"
+                      autoComplete="off"
                       placeholder="비밀번호를 한번 더 입력해주세요"
                     />
                     {showing && (
@@ -95,7 +106,11 @@ class SignUp extends Component {
                 <tr>
                   <th className="requiredCategory">이름</th>
                   <td>
-                    <input type="text" placeholder="이름을 입력해주세요" />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="이름을 입력해주세요"
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -103,6 +118,7 @@ class SignUp extends Component {
                   <td>
                     <input
                       type="email"
+                      name="email"
                       placeholder="예: byeolbammarket@bb.com"
                     />
                     <button type="button">중복확인</button>
@@ -136,32 +152,38 @@ class SignUp extends Component {
                   <th>성별</th>
                   <td>
                     <div className="options">
-                      <div className="genderOption">
+                      <div className="genderOptions">
                         <input
                           type="radio"
                           id="male"
                           name="gender"
                           value="male"
                         />
-                        <label htmlFor="male">남자</label>
+                        <label htmlFor="male" className="genderOption">
+                          남자
+                        </label>
                       </div>
-                      <div className="genderOption">
+                      <div className="genderOptions">
                         <input
                           type="radio"
                           id="female"
                           name="gender"
                           value="female"
                         />
-                        <label htmlFor="female">여자</label>
+                        <label htmlFor="female" className="genderOption">
+                          여자
+                        </label>
                       </div>
-                      <div className="genderOption">
+                      <div className="genderOptions">
                         <input
                           type="radio"
                           id="noSelect"
                           name="gender"
                           value="option"
                         />
-                        <label htmlFor="noSelect">선택안함</label>
+                        <label htmlFor="noSelect" className="genderOption">
+                          선택안함
+                        </label>
                       </div>
                     </div>
                   </td>
@@ -197,23 +219,30 @@ class SignUp extends Component {
                   <th>추가입력 사항</th>
                   <td>
                     <div className="options">
-                      <div className="additionOption">
+                      <div className="additionOptions">
                         <input
                           type="radio"
                           id="recommendedId"
                           name="addition"
                           value="id"
                         />
-                        <label htmlFor="recommendedId">추천인 아이디</label>
+                        <label
+                          htmlFor="recommendedId"
+                          className="additionOption"
+                        >
+                          추천인 아이디
+                        </label>
                       </div>
-                      <div className="additionOption">
+                      <div className="additionOptions">
                         <input
                           type="radio"
                           id="eventJoin"
                           name="addition"
                           value="event"
                         />
-                        <label htmlFor="eventJoin">참여 이벤트명</label>
+                        <label htmlFor="eventJoin" className="additionOption">
+                          참여 이벤트명
+                        </label>
                       </div>
                     </div>
                     <div>
@@ -336,7 +365,7 @@ class SignUp extends Component {
               </tbody>
             </table>
             <div className="formSubmit">
-              <button type="submit" className="submitBtn">
+              <button type="button" className="submitBtn">
                 가입하기
               </button>
             </div>
