@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   main {
     width: 800px;
-    padding-bottom: 80px;
+    padding: 80px;
     border-bottom: 1px solid #cccccc;
     font-size: 15px;
     font-weight: 600;
@@ -15,10 +16,11 @@
       border-bottom: 2px solid #000000;
 
       h1 {
-        padding: 40px 0;
+        padding: 50px 0;
         font-size: 30px;
         text-align: center;
       }
+
       .requirement {
         margin-bottom: 10px;
         color: #666666;
@@ -33,19 +35,18 @@
     }
 
     form {
-      padding: 0 20px;
       table {
         tbody {
           border-bottom: 1px solid #eeeeee;
           th {
-            width: 25%;
-            padding-top: 20px;
-            font-size: 15px;
+            width: 20%;
+            padding: 20px 0 0 15px;
+            font-size: 13px;
             text-align: left;
           }
           .requiredCategory::after {
             content: "*";
-            color: red;
+            color: #ff0000;
           }
           td {
             width: 75%;
@@ -57,16 +58,16 @@
               width: 70%;
               padding: 15px;
               margin-right: 10px;
-              color: #cccccc;
               border: 1px solid #cccccc;
               border-radius: 3px;
 
               &::placeholder {
                 color: #cccccc;
-                font-size: 15px;
+                font-size: 13px;
                 font-weight: 600;
               }
             }
+
             button {
               width: 130px;
               padding: 12px;
@@ -95,7 +96,7 @@
 
               .inputCondition {
                 padding: 3px 0;
-                font-size: 13px;
+                font-size: 12px;
 
                 &::before {
                   content: "•";
@@ -105,21 +106,22 @@
 
               .inputDescription {
                 margin-top: 5px;
-                font-size: 13px;
+                font-size: 12px;
               }
             }
 
             .birth {
-              width: 400px;
+              width: 350px;
               border: 1px solid #cccccc;
               border-radius: 3px;
               text-align: center;
 
-              input {
+              .birthInput {
                 width: 100px;
                 margin: 0;
                 border: none;
                 text-align: center;
+                outline: none;
               }
 
               span {
@@ -184,7 +186,7 @@
           }
 
           strong {
-            font-size: 20px;
+            font-size: 18px;
           }
 
           .terms {
@@ -194,7 +196,8 @@
             &.termsInfo {
               padding: 15px 0 0 40px;
               color: #666666;
-              font-size: 13px;
+              font-size: 12px;
+              letter-spacing: -0.05em;
             }
 
             &.smsEmail {
@@ -214,6 +217,7 @@
             position: absolute;
             right: 10px;
             color: #5f0080;
+            font-size: 13px;
             text-decoration: none;
 
             &::after {
@@ -225,6 +229,7 @@
             padding-left: 70px;
             color: #5f0080;
             font-size: 13px;
+            letter-spacing: -0.03em;
 
             &::before {
               content: "└ ";

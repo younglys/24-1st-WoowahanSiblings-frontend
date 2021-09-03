@@ -144,21 +144,21 @@ export default class SignUp extends Component {
                     <div className="birth">
                       <input
                         type="text"
-                        className="birthYear"
+                        className="birthInput"
                         maxLength="4"
                         placeholder="YYYY"
                       ></input>
                       <span>/</span>
                       <input
                         type="text"
-                        className="birthMonth"
+                        className="birthInput"
                         maxLength="2"
                         placeholder="MM"
                       ></input>
                       <span>/</span>
                       <input
                         type="text"
-                        className="birthDay"
+                        className="birthInput"
                         maxLength="2"
                         placeholder="DD"
                       ></input>
