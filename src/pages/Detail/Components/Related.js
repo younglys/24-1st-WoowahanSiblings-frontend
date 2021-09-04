@@ -6,8 +6,11 @@ class GoodsRelatedList extends Component {
   render() {
     return (
       <div className="goodsRelated">
-        <div className="relatedLine"></div>
-        <h3>RELATED PRODUCT</h3>
+        <div className="wrapper">
+          <div className="relatedLine"></div>
+          <h3>RELATED PRODUCT</h3>
+        </div>
+
         <div className="relatedList">
           <button className="relatedArrow">
             <i className="fas fa-chevron-left" />

@@ -1,20 +1,27 @@
 .goodsRelated {
   margin-top: 35px;
 
-  .relatedLine {
-    width: 20px;
-    height: 5px;
-    background-color: black;
-  }
+  .wrapper {
+    position: relative;
+    width: 1130px;
+    margin: 0 auto;
 
-  h3 {
-    font-size: 15px;
-    font-weight: 600;
-    padding: 5px 0;
+    .relatedLine {
+      width: 20px;
+      height: 5px;
+      background-color: black;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 5px 0;
+    }
   }
 
   .relatedList {
     display: flex;
+    justify-content: center;
     padding: 15px 0;
 
     .relatedArrow {

@@ -3,12 +3,19 @@ import CalculateAmount from "../../../components/CalculateAmount/CalculateAmount
 import "./CartPut.scss";
 
 class CartPut extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: this.props.name };
-  }
-
   render() {
+    const {
+      name,
+      sub_name,
+      price,
+      discount,
+      sales_unit,
+      weight,
+      shipping_type,
+      origin,
+      package_type,
+    } = this.props;
+
     return (
       <div className="cartPut">
         <img
@@ -18,8 +25,8 @@ class CartPut extends Component {
         />
         <div className="innerView">
           <p className="goodsName">
-            <strong className="name">{this.props.name}</strong>
-            <span className="shortDesc">부드러운 과육 속 짙은 달콤함</span>
+            <strong className="name">{name}</strong>
+            <span className="shortDesc">{sub_name}</span>
           </p>
           <div className="priceInfo">
             <p className="dcInfo">회원할인가</p>
@@ -27,9 +34,9 @@ class CartPut extends Component {
               17,550
               <span className="won">원</span>
             </span>
-            <span className="dcPercent">5%</span>
+            <span className="dcPercent">{discount}%</span>
             <a className="price" href="/">
-              19,000
+              {price}
               <span className="won">원</span>
             </a>
             <span className="notLogin">
@@ -47,24 +54,24 @@ class CartPut extends Component {
           <div className="goodsInfo">
             <dl className="infoList">
               <dt className="tit">판매단위</dt>
-              <dd className="desc">1박스</dd>
+              <dd className="desc">{sales_unit}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">중량/용량</dt>
-              <dd className="desc">배송구분</dd>
+              <dd className="desc">{weight}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">배송구분</dt>
-              <dd className="desc">샛별배송 ONLY</dd>
+              <dd className="desc">{shipping_type}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">원산지</dt>
-              <dd className="desc">국산</dd>
+              <dd className="desc">{origin}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">포장타입</dt>
               <div className="wrapper">
-                <dd className="desc">냉장/종이포장</dd>
+                <dd className="desc">{package_type}</dd>
                 <p className="smallDesc">
                   택배배송은 에코포장이 스티로폼으로 대체됩니다.
                 </p>
