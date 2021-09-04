@@ -1,0 +1,57 @@
+[
+  {
+    "title": "이 상품 어때요 ?",
+    "product": [
+      {
+        "name": "한돈 앞다리살 2종 (냉장)",
+        "price": "5,300원",
+        "imges": "/images/6.jpeg"
+      },
+      {
+        "name": "찬환경 백향과",
+        "price": "3,300원",
+        "imges": "/images/7.jpeg"
+      },
+      {
+        "name": "한돈 삼겹살 2종",
+        "price": "4,300원",
+        "imges": "/images/8.jpeg"
+      },
+      {
+        "name": "생 모레 치즈",
+        "price": "5,300원",
+        "imges": "/images/9.jpeg"
+      },
+      {
+        "name": "살레위드 솔티드",
+        "price": "5,300원",
+        "imges": "/images/10.jpeg"
+      },
+      {
+        "name": "드립백 샘플러",
+        "price": "5,300원",
+        "imges": "/images/11.jpeg"
+      },
+      {
+        "name": "닭 다리살",
+        "price": "5,300원",
+        "imges": "/images/12.jpeg"
+      },
+      {
+        "name": "그랑도르즈",
+        "price": "5,300원",
+        "imges": "/images/6.jpeg"
+      },
+      {
+        "name": "열무김치",
+        "price": "5,300원",
+        "imges": "/images/7.jpeg"
+      },
+      {
+        "name": "쑥 오쟁이떡",
+        "price": "5,300원",
+        "imges": "/images/8.jpeg"
+      }
+    ]
+  }
+]

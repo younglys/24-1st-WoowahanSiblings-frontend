@@ -1,0 +1,37 @@
+[
+  {
+    "title": "마감세일",
+    "product": [
+      {
+        "name": "크로아상",
+        "price": "5,300원",
+        "imges": "/images/6.jpeg"
+      },
+      {
+        "name": "버크셔",
+        "price": "5,300원",
+        "imges": "/images/7.jpeg"
+      },
+      {
+        "name": "모닝롤",
+        "price": "5,300원",
+        "imges": "/images/8.jpeg"
+      },
+      {
+        "name": "오리가슴살",
+        "price": "5,300원",
+        "imges": "/images/9.jpeg"
+      },
+      {
+        "name": "오리 다리살",
+        "price": "5,300원",
+        "imges": "/images/10.jpeg"
+      },
+      {
+        "name": "암소한우",
+        "price": "5,300원",
+        "imges": "/images/11.jpeg"
+      }
+    ]
+  }
+]

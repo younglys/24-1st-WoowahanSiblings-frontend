@@ -59,21 +59,21 @@ class AdList extends Component {
         onPointerOut={this.buttonDisplayOff}
       >
         <div className="adBanner">
-          <botton
+          <div
             className="leftArrow"
             onClick={this.imgChangeLeft}
             style={{ display: this.state.buttonDisplay }}
           >
             <img src="/images/leftbutton.webp" />
-          </botton>
+          </div>
           <img alt="ad" src={`./images/${this.state.adImg}.webp`} />
-          <botton
+          <div
             className="rightArrow"
             onClick={this.imgChangeRight}
             style={{ display: this.state.buttonDisplay }}
           >
             <img src="/images/rightbutton.webp" />
-          </botton>
+          </div>
         </div>
       </div>
     );
