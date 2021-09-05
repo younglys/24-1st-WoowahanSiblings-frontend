@@ -8,11 +8,16 @@ class SignUp extends Component {
     this.state = {
       id: "",
       password: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
       showing: false,
+      checkBtn: false,
     };
   }
 
   handleShowInputCondition = e => {
+    console.log("e.target", e.target);
     this.setState({
       showing: true,
     });
@@ -27,6 +32,7 @@ class SignUp extends Component {
 
   render() {
     const { id, password, showing } = this.state;
+    let btnStatus = this.state.checkBtn ? "check" : "uncheck";
     return (
       <div className="signUp">
         <main>
@@ -278,9 +284,9 @@ class SignUp extends Component {
                   <td>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <strong>전체 동의합니다.</strong>
                       </label>
                       <p className="terms termsInfo">
@@ -290,9 +296,9 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <span>이용약관 동의</span>
                         <span className="selectOption"> (필수)</span>
                       </label>
@@ -302,9 +308,9 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <span>개인정보 수집&middot;이용 동의</span>
                         <span className="selectOption"> (필수)</span>
                         <Link to="#!" className="termsView">
@@ -314,9 +320,9 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <span>개인정보 수집&middot;이용 동의</span>
                         <span className="selectOption"> (선택)</span>
                       </label>
@@ -326,23 +332,23 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</span>
                         <span className="selectOption"> (선택)</span>
                       </label>
                       <div className="terms smsEmail">
                         <label className="sms">
-                          <span className="checkCircle">
+                          <button className={btnStatus}>
                             <i className="fas fa-check"></i>
-                          </span>
+                          </button>
                           <span>SMS</span>
                         </label>
                         <label>
-                          <span className="checkCircle">
+                          <button className={btnStatus}>
                             <i className="fas fa-check"></i>
-                          </span>
+                          </button>
                           <span>이메일</span>
                         </label>
                       </div>
@@ -353,9 +359,9 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <span className="checkCircle">
+                        <button className={btnStatus}>
                           <i className="fas fa-check"></i>
-                        </span>
+                        </button>
                         <span>본인은 만 14세 이상입니다.</span>
                         <span className="selectOption"> (필수)</span>
                       </label>
@@ -365,7 +371,11 @@ class SignUp extends Component {
               </tbody>
             </table>
             <div className="formSubmit">
-              <button type="button" className="submitBtn">
+              <button
+                onClick={this.handleSignup}
+                type="button"
+                className="submitBtn"
+              >
                 가입하기
               </button>
             </div>
