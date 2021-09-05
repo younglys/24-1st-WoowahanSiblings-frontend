@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import CartSelect from "./Components/CartSelect";
+import CartItemList from "./Components/CartItemList";
 import "./Cart.scss";
 
-export default class Cart extends Component {
+class Cart extends Component {
   render() {
     return (
       <div className="cart">
@@ -10,7 +11,9 @@ export default class Cart extends Component {
         <div className="cartContent">
           <div className="cartItemList">
             <CartSelect />
-            <div className="innerCart"></div>
+            <div className="innerCart">
+              <CartItemList />
+            </div>
             <CartSelect />
           </div>
           <div className="cartResult">
@@ -86,3 +89,5 @@ export default class Cart extends Component {
     );
   }
 }
+
+export default Cart;

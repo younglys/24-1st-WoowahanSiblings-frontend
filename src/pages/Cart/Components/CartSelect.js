@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./CartSelect.scss";
 
-export default class CartSelect extends Component {
+class CartSelect extends Component {
   render() {
     return (
       <div className="cartSelect">
@@ -14,3 +14,5 @@ export default class CartSelect extends Component {
     );
   }
 }
+
+export default CartSelect;
