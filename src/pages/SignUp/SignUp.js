@@ -17,7 +17,7 @@ class SignUp extends Component {
   }
 
   handleShowInputCondition = e => {
-    console.log("e.target", e.target);
+    //console.log("e.target", e.target);
     this.setState({
       showing: true,
     });
@@ -30,8 +30,56 @@ class SignUp extends Component {
     });
   };
 
+  handleBtnColor = e => {
+    e.preventDefault();
+    this.setState({
+      checkBtn: !this.state.checkBtn,
+    });
+  };
+
+  handleSignup = () => {
+    const { id, password, name, email, phoneNumber, address, gender, birth } =
+      this.state;
+    fetch("http://10.58.2.140:8000/user/signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        account_name: id,
+        password: password,
+        name: name,
+        email: email,
+        phone_number: phoneNumber,
+        address: address,
+        gender: gender,
+        date_of_birth: birth,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log("결과: ", res);
+        //this.setState({ name: res.name });
+        if (res.token) {
+          // (res.MESSAGE === "SUCCESS")
+          localStorage.setItem("token", res.token);
+          alert(
+            `${this.state.account_name}님 별밤마켓에 오신 것을 환영합니다!`
+          );
+          this.props.history.push("/");
+        } else if (res.MESSAGE === "") {
+          // 아이디 중복확인
+          alert("현재 사용중인 아이디입니다.");
+        } else {
+          alert("필수 입력 정보를 모두 입력해주세요.");
+        }
+      });
+  };
+
   render() {
-    const { id, password, showing } = this.state;
+    const { showing } = this.state;
+    console.log(this.state);
     let btnStatus = this.state.checkBtn ? "check" : "uncheck";
     return (
       <div className="signUp">
@@ -40,7 +88,7 @@ class SignUp extends Component {
             <h1>회원가입</h1>
             <p className="requirement">필수입력사항</p>
           </div>
-          <form className="form">
+          <form className="form" onChange={this.handleInput}>
             <table>
               <tbody>
                 <tr>
@@ -97,6 +145,7 @@ class SignUp extends Component {
                     <input
                       onClick={this.handleShowInputCondition}
                       type="password"
+                      name="passwordConfirmation"
                       autoComplete="off"
                       placeholder="비밀번호를 한번 더 입력해주세요"
                     />
@@ -133,17 +182,22 @@ class SignUp extends Component {
                 <tr>
                   <th className="requiredCategory">휴대폰</th>
                   <td>
-                    <input type="text" placeholder="숫자만 입력해주세요" />
+                    <input
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="숫자만 입력해주세요"
+                    />
                     <button type="button">인증번호 받기</button>
                   </td>
                 </tr>
                 <tr>
                   <th className="requiredCategory">주소</th>
                   <td>
-                    <button type="button" className="addrSearchBtn">
-                      <i className="fas fa-search"></i>
-                      &nbsp; 주소 검색
-                    </button>
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder="예: 서울시 강남구 테헤란로 427, 3층 별밤마켓"
+                    />
                     <div>
                       {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
                       <div className="inputConditionWrapper">
@@ -199,7 +253,17 @@ class SignUp extends Component {
                   <td>
                     <div className="birth">
                       <input
+                        type="date"
+                        name="birth"
+                        className="birthDateInput"
+                        placeholder="YYYY-MM-DD"
+                        onFocus={(this.type = this.date)}
+                      ></input>
+                    </div>
+                    <div className="birth">
+                      <input
                         type="text"
+                        name="birth"
                         className="birthInput"
                         maxLength="4"
                         placeholder="YYYY"
@@ -207,6 +271,7 @@ class SignUp extends Component {
                       <span>/</span>
                       <input
                         type="text"
+                        name="birth"
                         className="birthInput"
                         maxLength="2"
                         placeholder="MM"
@@ -214,6 +279,7 @@ class SignUp extends Component {
                       <span>/</span>
                       <input
                         type="text"
+                        name="birth"
                         className="birthInput"
                         maxLength="2"
                         placeholder="DD"
@@ -284,7 +350,10 @@ class SignUp extends Component {
                   <td>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <strong>전체 동의합니다.</strong>
@@ -296,7 +365,10 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <span>이용약관 동의</span>
@@ -308,7 +380,10 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <span>개인정보 수집&middot;이용 동의</span>
@@ -320,7 +395,10 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <span>개인정보 수집&middot;이용 동의</span>
@@ -332,7 +410,10 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</span>
@@ -340,13 +421,19 @@ class SignUp extends Component {
                       </label>
                       <div className="terms smsEmail">
                         <label className="sms">
-                          <button className={btnStatus}>
+                          <button
+                            className={btnStatus}
+                            onClick={this.handleBtnColor}
+                          >
                             <i className="fas fa-check"></i>
                           </button>
                           <span>SMS</span>
                         </label>
                         <label>
-                          <button className={btnStatus}>
+                          <button
+                            className={btnStatus}
+                            onClick={this.handleBtnColor}
+                          >
                             <i className="fas fa-check"></i>
                           </button>
                           <span>이메일</span>
@@ -359,7 +446,10 @@ class SignUp extends Component {
                     </div>
                     <div className="terms">
                       <label>
-                        <button className={btnStatus}>
+                        <button
+                          className={btnStatus}
+                          onClick={this.handleBtnColor}
+                        >
                           <i className="fas fa-check"></i>
                         </button>
                         <span>본인은 만 14세 이상입니다.</span>
