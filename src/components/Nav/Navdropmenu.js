@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class NavDropmenu extends Component {
+class Navdropmenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class NavDropmenu extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.kurly.com/v2/categories?ver=1", {})
+    fetch("https://api.kurly.com/v2/categories?ver=1")
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -101,4 +101,4 @@ class NavDropmenu extends Component {
   }
 }
 
-export default NavDropmenu;
+export default Navdropmenu;

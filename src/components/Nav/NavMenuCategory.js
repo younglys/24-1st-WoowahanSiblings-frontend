@@ -4,9 +4,9 @@ class NavMenuCategory extends Component {
   render() {
     return (
       <>
-        {CATEGORY.map(categoryList => {
+        {CATEGORY.map((categoryList, index) => {
           return (
-            <li key={CATEGORY.length}>
+            <li key={index}>
               <a href="">{categoryList}</a>
             </li>
           );

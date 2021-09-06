@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TopLayout from "./TopLayout";
-import NavDropmenu from "./NavDropmenu";
+import Navdropmenu from "./Navdropmenu";
 import NavMenuCategory from "./NavMenuCategory";
 import NavInput from "./NavInput";
 import "./Nav.scss";
@@ -15,7 +15,7 @@ export default class Nav extends Component {
         </div>
         <div className="thirdLayout">
           <ul className="allCategorie">
-            <NavDropmenu />
+            <Navdropmenu />
             <NavMenuCategory />
           </ul>
           <NavInput />
