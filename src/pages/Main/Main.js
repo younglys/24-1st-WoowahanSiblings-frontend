@@ -18,6 +18,7 @@ export default class Main extends Component {
       productListThird: [],
       kulryList: [],
       instagram: [],
+      ex: [],
     };
   }
 
@@ -71,13 +72,26 @@ export default class Main extends Component {
           instagram: productData,
         });
       });
+
+    fetch("http://10.58.2.54:8000/products/lists", {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(productData => {
+        this.setState({
+          ex: productData.products,
+        });
+      });
   }
 
   render() {
-    console.log(this.state.kulryList);
+    console.log(this.state.ex);
     return (
       <div className="main">
         <Nav />
+        {/* {this.state.ex.map(productWhy => {
+          return <ProductList title={productWhy.name} />;
+        })} */}
         <AdList />
         {this.state.productList.map(productWhy => {
           return (
