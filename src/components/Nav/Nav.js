@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-import Navdropmenu from "./Navdropmenu";
-import NavMenuCategory from "./NavMenuCategory";
 import TopLayout from "./TopLayout";
-import Logo from "./Logo";
-import "./Nav.scss";
+import NavDropmenu from "./NavDropmenu";
+import NavMenuCategory from "./NavMenuCategory";
 import NavInput from "./NavInput";
+import "./Nav.scss";
 
 export default class Nav extends Component {
   render() {
     return (
       <nav className="navLayout">
         <TopLayout />
-        <Logo />
+        <div className="secondLayout">
+          <img alt="logo" src="/images/logo2.png" />
+        </div>
         <div className="thirdLayout">
           <ul className="allCategorie">
-            <Navdropmenu />
+            <NavDropmenu />
             <NavMenuCategory />
           </ul>
           <NavInput />

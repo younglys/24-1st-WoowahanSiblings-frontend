@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Navdropmenu extends Component {
+class NavDropmenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,9 +12,7 @@ class Navdropmenu extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.kurly.com/v2/categories?ver=1", {
-      method: "GET",
-    })
+    fetch("https://api.kurly.com/v2/categories?ver=1", {})
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -36,72 +34,71 @@ class Navdropmenu extends Component {
       category => +category.no === +no
     );
     if (!subCategory) return [];
-    else return subCategory.categories;
+    return subCategory.categories;
   };
 
   render() {
+    const { itemList, currentno, isDropDown, isDropDownNext } = this.state;
     return (
-      <>
-        <li onMouseLeave={this.handleDropDown}>
-          <a href="#">
-            <i className="fas fa-bars" />
-            <span>전체 카테고리</span>
-          </a>
+      <li onMouseLeave={this.handleDropDown}>
+        <a href="#">
+          <i className="fas fa-bars" />
+          <span>전체 카테고리</span>
+        </a>
+        <div
+          className="dropDownMenu"
+          style={{
+            display: isDropDown ? "flex" : "none",
+            width: isDropDownNext ? "320px" : "200px",
+          }}
+        >
           <div
-            className="dropDownMenu"
+            className="dropDownMenuList"
+            onMouseLeave={() =>
+              this.setState({ currentno: 0, isDropDownNext: false })
+            }
+          >
+            {this.state.itemList.map(item => {
+              return (
+                <p
+                  className="dropDownMenuListMain"
+                  key={item.no}
+                  onMouseEnter={() =>
+                    this.setState({
+                      currentno: item.no,
+                      isDropDownNext: true,
+                    })
+                  }
+                >
+                  {item.name}
+                </p>
+              );
+            })}
+          </div>
+          <div
+            className="dropDownNext"
             style={{
-              display: this.state.isDropDown ? "flex" : "none",
-              width: this.state.isDropDownNext ? "320px" : "200px",
+              display: isDropDownNext ? "block" : "none",
             }}
           >
-            <div
-              className="dropDownMenuList"
-              onMouseLeave={() =>
-                this.setState({ currentno: 0, isDropDownNext: false })
-              }
-            >
-              {this.state.itemList.map(item => {
-                return (
-                  <p
-                    className="dropDownMenuListMain"
-                    key={item.no}
-                    onMouseEnter={() =>
-                      this.setState({
-                        currentno: item.no,
-                        isDropDownNext: true,
-                      })
-                    }
-                  >
-                    {item.name}
-                  </p>
-                );
-              })}
-            </div>
-            <div
-              className="dropDownNext"
-              style={{
-                display: this.state.isDropDownNext ? "block" : "none",
-              }}
-            >
-              {this.findSubCategories(this.state.currentno).map(subList => {
-                return (
-                  <p
-                    className="dropDownMenuListSub"
-                    key={subList.no}
-                    style={{
-                      display: this.state.isDropDownNext ? "block" : "none",
-                    }}
-                  >
-                    {subList.name}
-                  </p>
-                );
-              })}
-            </div>
+            {this.findSubCategories(currentno).map(subList => {
+              return (
+                <p
+                  className="dropDownMenuListSub"
+                  key={subList.no}
+                  style={{
+                    display: isDropDownNext ? "block" : "none",
+                  }}
+                >
+                  {subList.name}
+                </p>
+              );
+            })}
           </div>
-        </li>
-      </>
+        </div>
+      </li>
     );
   }
 }
 
-export default Navdropmenu;
+export default NavDropmenu;

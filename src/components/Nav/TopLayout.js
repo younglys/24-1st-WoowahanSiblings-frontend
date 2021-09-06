@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class TopLayout extends Component {
   render() {
     return (
-      <div className="firstLayout">
+      <div className="topLayout">
         <div className="kurlyMarket">
           <a href="#">
             <img alt="delivery" src="/images/deli.webp" />
