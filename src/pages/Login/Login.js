@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./Login.scss";
 
 class Login extends Component {
@@ -18,10 +17,14 @@ class Login extends Component {
     });
   };
 
+  handleSignUp = e => {
+    this.props.history.push("/signup");
+  };
+
   handleLogin = () => {
     this.props.history.push("/");
     console.log(this.props.history);
-    fetch("http://10.58.3.39:8000/bbmarket/login", {
+    fetch("http://10.58.2.140:8000/bbmarket/login", {
       method: "POST",
       body: JSON.stringify({
         account_name: this.state.id,
@@ -30,15 +33,20 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(res => {
+        const messages = {
+          SUCCESS: `로그인을 성공했습니다. ${this.state.account_name}님 반갑습니다!`,
+          INVALID_USER: "잘못된 회원정보입니다. 아이디를 다시 입력해주세요.",
+          INVALID_PASSWORD:
+            "잘못된 회원정보입니다. 비밀번호를 다시 입력해주세요.",
+          KEY_ERROR: "아이디와 비밀번호를 입력해주세요.",
+        };
+        alert(messages[res.MESSAGE]);
         console.log("결과: ", res);
+
         if (res.token) {
-          localStorage.setItem("token", res.token);
-          alert(`${this.state.account_name}님 반갑습니다!`);
+          localStorage.setItem("Token", res.Token);
+          console.log(res.MESSAGE);
           this.props.history.push("/");
-          console.log(res);
-        } else {
-          alert("아이디, 비밀번호 다시 입력해주세요.");
-          console.log(res);
         }
       });
   };
@@ -70,33 +78,25 @@ class Login extends Component {
               <label htmlFor="secureAccess">보안접속</label>
             </div>
             <div className="findIdPwBtn">
-              <Link to="#!" className="findId">
-                <span>아이디 찾기</span>
-              </Link>
-              <Link to="#!" className="findPw">
-                <span>비밀번호 찾기</span>
-              </Link>
+              <span className="findId">아이디 찾기</span>
+              <span className="findPw">비밀번호 찾기</span>
             </div>
           </div>
           <div className="btns">
-            <Link to="#!">
-              <button
-                onClick={this.handleLogin}
-                type="button"
-                className="btn loginBtn"
-              >
-                로그인
-              </button>
-            </Link>
-            <Link to="#!">
-              <button
-                onClick={this.handleSignUp}
-                type="button"
-                className="btn signUpBtn"
-              >
-                회원가입
-              </button>
-            </Link>
+            <button
+              onClick={this.handleLogin}
+              type="button"
+              className="btn loginBtn"
+            >
+              로그인
+            </button>
+            <button
+              onClick={this.handleSignUp}
+              type="button"
+              className="btn signUpBtn"
+            >
+              회원가입
+            </button>
           </div>
         </main>
       </div>
