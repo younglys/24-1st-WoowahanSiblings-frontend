@@ -6,6 +6,8 @@ import "./Main.scss";
 import Benefit from "./Benefit";
 import CenterAdd from "./CenterAdd";
 import ButtonProductList from "./ButtonProductList";
+import KulryList from "./KulryList";
+import Instagram from "./Instagram";
 
 export default class Main extends Component {
   constructor(props) {
@@ -14,6 +16,8 @@ export default class Main extends Component {
       productList: [],
       productListSecond: [],
       productListThird: [],
+      kulryList: [],
+      instagram: [],
     };
   }
 
@@ -47,10 +51,30 @@ export default class Main extends Component {
           productListThird: productData,
         });
       });
+
+    fetch("http://localhost:3000/data/kulryList.json", {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(productData => {
+        this.setState({
+          kulryList: productData,
+        });
+      });
+
+    fetch("http://localhost:3000/data/instagram.json", {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(productData => {
+        this.setState({
+          instagram: productData,
+        });
+      });
   }
 
   render() {
-    console.log(this.state.productList);
+    console.log(this.state.kulryList);
     return (
       <div className="main">
         <Nav />
@@ -109,6 +133,17 @@ export default class Main extends Component {
             />
           );
         })}
+        <div style={{ backgroundColor: "#f7f7f7" }}>
+          {this.state.productList.map(productWhy => {
+            return (
+              <ProductList
+                title={productWhy.title}
+                product={productWhy.product}
+              />
+            );
+          })}
+        </div>
+
         {this.state.productList.map(productWhy => {
           return (
             <ProductList
@@ -127,14 +162,65 @@ export default class Main extends Component {
             );
           })}
         </div>
-        {this.state.productList.map(productWhy => {
+        {this.state.kulryList.map(productWhy => {
           return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
+            <KulryList title={productWhy.title} product={productWhy.product} />
           );
         })}
+        {this.state.instagram.map(productWhy => {
+          return (
+            <Instagram title={productWhy.title} product={productWhy.product} />
+          );
+        })}
+        <CenterAdd />
+        <div className="footer">
+          <div className="footerInfo">
+            <div className="infoCustomerCenter">고객 행복 센터</div>
+            <div className="infoNumber">
+              <div>1644-1107</div>
+              <div className="operatingHours">
+                <span>365고객센터</span>
+                <span>오전 7시 ~ 오후 7시</span>
+              </div>
+            </div>
+            <div className="kakao">
+              <div className="kakaoBox">카카오톡 문의</div>
+              <div className="kakaoOperatingHours">
+                <span>365고객센터</span>
+                <span className="infoTextColor">오전 7시 ~ 오후 7시</span>
+              </div>
+            </div>
+            <div className="oneAndOne">
+              <div className="oneAndOneBox">1:1문의</div>
+              <div className="oneAndOneOperatingHours">
+                <span>24시간 접수 가능</span>
+                <span className="infoTextColor">
+                  고객센터 운영시간에 순차적으로 답변해드리겠습니다.
+                </span>
+              </div>
+            </div>
+            <div className="bulkOrder">
+              <div className="bulkOrderBox">대량주문 문의</div>
+              <div className="bulkOrderOperatingHours">
+                <span>24시간 접수 가능</span>
+                <span className="infoTextColor">
+                  비회원의 겨우 메일로 문의 바랍니다.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="company">
+            <ul className="companyList">
+              <li>컬리소개</li>
+              <li>컬리소개영상</li>
+              <li>인재채용</li>
+              <li>이용약관</li>
+              <li>개인정보처리방침</li>
+              <li>이용안내</li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

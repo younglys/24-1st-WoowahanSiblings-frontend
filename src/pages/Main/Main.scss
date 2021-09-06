@@ -101,7 +101,7 @@
         position: absolute;
         width: 52px;
         height: 52px;
-        left: 983px;
+        left: 1000px;
         top: 28%;
 
         img {
@@ -114,7 +114,7 @@
         position: absolute;
         width: 52px;
         height: 52px;
-        left: 1%;
+        left: -5px;
         top: 28%;
 
         img {
@@ -218,6 +218,352 @@
 
     img {
       height: 140px;
+    }
+  }
+
+  .kulryList {
+    .kulryStatus {
+      padding: 79px 0 35px;
+
+      h3 {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.3px;
+        text-align: center;
+      }
+    }
+  }
+
+  .kulrylistGoods {
+    width: 1068px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .kulryboxWrapper {
+      position: absolute;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .kulryboxViewport {
+      position: absolute;
+      width: 100%;
+      height: 506px;
+
+      .kulryproductLeftButton {
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        left: 1030px;
+        top: 18%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .kulryproductRightButton {
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        left: -1%;
+        top: 18%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      ul {
+        display: flex;
+        position: absolute;
+        transition: all 0.3s;
+
+        li {
+          width: 338px;
+          height: 100%;
+          margin-right: 18px;
+          display: inline-block;
+
+          span {
+            display: block;
+            padding-top: 9px;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+
+            a {
+              text-decoration: none;
+              font-size: 16px;
+              line-height: 23px;
+              color: black;
+            }
+          }
+
+          img {
+            width: 338px;
+            height: 229px;
+          }
+        }
+      }
+    }
+  }
+
+  .instagramList {
+    .instagramStatus {
+      padding: 79px 0 35px;
+
+      h3 {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.3px;
+        text-align: center;
+      }
+    }
+  }
+
+  .instagramlistGoods {
+    width: 1068px;
+    height: 275px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .instagramboxWrapper {
+      position: absolute;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .instagramboxViewport {
+      position: absolute;
+      width: 100%;
+      height: 506px;
+
+      .instagramproductLeftButton {
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        left: 1030px;
+        top: 18%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .instagramproductRightButton {
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        left: -1%;
+        top: 18%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      ul {
+        display: flex;
+        position: absolute;
+        transition: all 0.3s;
+
+        li {
+          width: 175px;
+          height: 100%;
+          display: inline-block;
+
+          span {
+            display: block;
+            padding-top: 9px;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+
+            a {
+              text-decoration: none;
+              font-size: 16px;
+              line-height: 23px;
+              color: black;
+            }
+          }
+
+          img {
+            width: 175px;
+            height: 175px;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    margin: 0 auto;
+
+    .footerInfo {
+      width: 534px;
+      display: flex;
+      flex-direction: column;
+
+      .infoCustomerCenter {
+        height: 65px;
+        padding: 29px 0 2px;
+        font-weight: 700;
+        font-size: 20px;
+        color: #333;
+        line-height: 20px;
+      }
+
+      .infoNumber {
+        display: flex;
+        height: 65px;
+
+        div {
+          padding-top: 4px;
+          font-weight: 800;
+          font-size: 28px;
+          color: #333;
+          width: 145px;
+          line-height: 36px;
+          letter-spacing: -0.5px;
+          white-space: nowrap;
+        }
+
+        .operatingHours {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-size: 14px;
+            color: #333;
+            line-height: 22px;
+            letter-spacing: -0.2px;
+          }
+        }
+      }
+
+      .kakao {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        height: 65px;
+
+        .kakaoBox {
+          height: 40px;
+          padding-top: 7px;
+          margin-top: 3px;
+          border: 1px solid #e3e3e3;
+          border-radius: 3px;
+          font-weight: 700;
+          font-size: 14px;
+          color: #333;
+          line-height: 22px;
+          text-align: center;
+          width: 125px;
+        }
+
+        .kakaoOperatingHours {
+          display: flex;
+          flex-direction: column;
+          margin-left: 23px;
+          font-size: 14px;
+          line-height: 1.5;
+
+          .infoTextColor {
+            color: #999;
+          }
+        }
+      }
+
+      .oneAndOne {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        height: 65px;
+
+        .oneAndOneBox {
+          height: 40px;
+          padding-top: 7px;
+          margin-top: 3px;
+          border: 1px solid #e3e3e3;
+          border-radius: 3px;
+          font-weight: 700;
+          font-size: 14px;
+          color: #333;
+          line-height: 22px;
+          text-align: center;
+          width: 125px;
+        }
+
+        .oneAndOneOperatingHours {
+          display: flex;
+          flex-direction: column;
+          margin-left: 23px;
+          font-size: 14px;
+          line-height: 1.5;
+
+          .infoTextColor {
+            color: #999;
+          }
+        }
+      }
+
+      .bulkOrder {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        height: 65px;
+
+        .bulkOrderBox {
+          height: 40px;
+          padding-top: 7px;
+          margin-top: 3px;
+          border: 1px solid #e3e3e3;
+          border-radius: 3px;
+          font-weight: 700;
+          font-size: 14px;
+          color: #333;
+          line-height: 22px;
+          text-align: center;
+          width: 125px;
+        }
+
+        .bulkOrderOperatingHours {
+          display: flex;
+          flex-direction: column;
+          margin-left: 23px;
+          font-size: 14px;
+          line-height: 1.5;
+
+          .infoTextColor {
+            color: #999;
+          }
+        }
+      }
+    }
+
+    .company {
+      width: 534px;
+      display: flex;
+      flex-direction: column;
+      .companyList {
+        margin-top: 38px;
+        li {
+          font-size: 14px;
+          margin-left: 14px;
+          display: inline-block;
+        }
+      }
     }
   }
 }

@@ -1,0 +1,27 @@
+[
+  {
+    "title": "컬리의 레시피",
+    "product": [
+      {
+        "name": "레이어드 초밥",
+        "imges": "/images/13.jpeg"
+      },
+      {
+        "name": "어묵면볶이",
+        "imges": "/images/14.jpeg"
+      },
+      {
+        "name": "바질 토마토 에그인헬",
+        "imges": "/images/15.jpeg"
+      },
+      {
+        "name": "백김치말이 밥",
+        "imges": "/images/16.jpeg"
+      },
+      {
+        "name": "단호박 곤양 콩국수",
+        "imges": "/images/17.jpeg"
+      }
+    ]
+  }
+]
