@@ -22,8 +22,6 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    this.props.history.push("/");
-    console.log(this.props.history);
     fetch("http://10.58.2.140:8000/bbmarket/login", {
       method: "POST",
       body: JSON.stringify({
@@ -34,14 +32,22 @@ class Login extends Component {
       .then(res => res.json())
       .then(res => {
         const messages = {
-          SUCCESS: `로그인을 성공했습니다. ${this.state.account_name}님 반갑습니다!`,
+          LOGIN_SUCCESS: `로그인을 성공했습니다. ${this.state.account_name}님 반갑습니다!`,
           INVALID_USER: "잘못된 회원정보입니다. 아이디를 다시 입력해주세요.",
           INVALID_PASSWORD:
             "잘못된 회원정보입니다. 비밀번호를 다시 입력해주세요.",
           KEY_ERROR: "아이디와 비밀번호를 입력해주세요.",
         };
-        alert(messages[res.MESSAGE]);
-        console.log("결과: ", res);
+
+        if (res.message === "LOGIN_SUCCESS") {
+          alert(messages[res.message]);
+        } else if (res.message === "INVALID_USER") {
+          alert(messages[res.message]);
+        } else if (res.message === "INVALID_PASSWORD") {
+          alert(messages[res.message]);
+        } else if (res.message === "KEY_ERROR") {
+          alert(messages[res.message]);
+        }
 
         if (res.token) {
           localStorage.setItem("Token", res.Token);
