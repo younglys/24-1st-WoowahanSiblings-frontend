@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CalculateAmount from "../../../components/CalculateAmount/CalculateAmount";
 import "./CartItemList.scss";
 
 class CartItemList extends Component {
@@ -29,7 +28,6 @@ class CartItemList extends Component {
                 <span className="goodsTitle">미국산 프라임등급 살치살 5kg</span>
               </div>
               <div className="right">
-                <CalculateAmount />
                 <p>
                   2,680 <span className="won">원</span>
                 </p>
