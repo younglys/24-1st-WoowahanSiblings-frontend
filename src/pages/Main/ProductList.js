@@ -3,12 +3,13 @@ import React, { Component } from "react";
 class ProductList extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       slideCount: 0,
     };
   }
 
-  imgLength = this.props.product.length;
+  imgLength = this.props.datalength;
 
   slideWidth = IMG_WIDTH * this.imgLength + (this.imgLength - 1) * IMG_GAP;
 
@@ -48,11 +49,12 @@ class ProductList extends Component {
   };
 
   render() {
+    console.log(this.props.datalength);
     return (
       <>
         <div className="productList">
           <div className="productStatus">
-            <h3>{this.props.title}</h3>
+            {/* <h3>{this.props.title}</h3> */}
           </div>
         </div>
         <div className="listGoods">
@@ -63,11 +65,11 @@ class ProductList extends Component {
                   transform: `translateX(${this.state.slideCount}px)`,
                 }}
               >
-                {this.props.product.map(productListData => {
+                {this.props.ex.map(productListData => {
                   return (
                     <li>
                       <a href="#">
-                        <img src={productListData.imges} />
+                        <img src={productListData.img} />
                       </a>
                       <span className="productName">
                         <a href="#">{productListData.name} </a>
@@ -102,4 +104,4 @@ const IMG_WIDTH = 249;
 const IMG_GAP = 18;
 const IMG_SLIDE = 534;
 
-export default ProductList;
+export default React.memo(ProductList);

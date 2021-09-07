@@ -9,6 +9,7 @@ class Instagram extends Component {
   }
 
   imgLength = this.props.product.length;
+
   slideWidth = IMG_WIDTH * this.imgLength + (this.imgLength - 1) * IMG_GAP;
 
   hiddenedSlideWidth = this.slideWidth - 1068;

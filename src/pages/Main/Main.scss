@@ -180,11 +180,13 @@
 
       .benefitList {
         text-align: center;
+
         .benefitListImg {
           li {
             display: inline-block;
             margin-left: 15px;
             margin-bottom: 45px;
+
             a {
               img {
                 width: 328px;
@@ -193,6 +195,7 @@
             }
             .innerInfo {
               margin-top: 10px;
+
               .innerInfo1 {
                 display: block;
                 font-weight: 700;
@@ -200,6 +203,7 @@
                 line-height: 28px;
                 letter-spacing: -0.3px;
               }
+
               .innerInfo2 {
                 font-size: 16px;
                 line-height: 20px;
@@ -350,8 +354,8 @@
         position: absolute;
         width: 52px;
         height: 52px;
-        left: 1030px;
-        top: 18%;
+        left: 1019px;
+        top: 13%;
 
         img {
           width: 100%;
@@ -363,7 +367,7 @@
         position: absolute;
         width: 52px;
         height: 52px;
-        left: -1%;
+        left: -4px;
         top: 18%;
 
         img {

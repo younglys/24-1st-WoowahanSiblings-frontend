@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import Nav from "../../components/Nav/Nav";
 import AdList from "./AdList";
 import ProductList from "./ProductList";
-import "./Main.scss";
 import Benefit from "./Benefit";
 import CenterAdd from "./CenterAdd";
-import ButtonProductList from "./ButtonProductList";
+// import ButtonProductList from "./ButtonProductList";
 import KulryList from "./KulryList";
 import Instagram from "./Instagram";
+import "./Main.scss";
 
 export default class Main extends Component {
   constructor(props) {
@@ -19,6 +18,7 @@ export default class Main extends Component {
       kulryList: [],
       instagram: [],
       ex: [],
+      datalength: 0,
     };
   }
 
@@ -32,7 +32,6 @@ export default class Main extends Component {
           productList: productData,
         });
       });
-
     fetch("http://localhost:3000/data/thirdMock.json", {
       method: "GET",
     })
@@ -42,7 +41,6 @@ export default class Main extends Component {
           productListSecond: productData,
         });
       });
-
     fetch("http://localhost:3000/data/secondMock.json", {
       method: "GET",
     })
@@ -52,7 +50,6 @@ export default class Main extends Component {
           productListThird: productData,
         });
       });
-
     fetch("http://localhost:3000/data/kulryList.json", {
       method: "GET",
     })
@@ -62,7 +59,6 @@ export default class Main extends Component {
           kulryList: productData,
         });
       });
-
     fetch("http://localhost:3000/data/instagram.json", {
       method: "GET",
     })
@@ -72,109 +68,40 @@ export default class Main extends Component {
           instagram: productData,
         });
       });
-
-    fetch("http://10.58.2.54:8000/products/lists", {
+    fetch("http://localhost:3000/data/fiveMock.json", {
       method: "GET",
     })
       .then(res => res.json())
       .then(productData => {
         this.setState({
           ex: productData.products,
+          datalength: productData.products.length,
         });
       });
   }
 
   render() {
-    console.log(this.state.ex);
     return (
       <div className="main">
-        <Nav />
-        {/* {this.state.ex.map(productWhy => {
-          return <ProductList title={productWhy.name} />;
-        })} */}
         <AdList />
-        {this.state.productList.map(productWhy => {
-          return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <Benefit />
-        {this.state.productListSecond.map(productWhy => {
-          return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <CenterAdd />
-        {this.state.productListThird.map(productWhy => {
-          return (
-            <ButtonProductList
-              title={productWhy.title}
-              product={productWhy.product}
-              buttonList={productWhy.buttonList}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <CenterAdd />
-        {this.state.productList.map(productWhy => {
-          return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <div style={{ backgroundColor: "#f7f7f7" }}>
-          {this.state.productList.map(productWhy => {
-            return (
-              <ProductList
-                title={productWhy.title}
-                product={productWhy.product}
-              />
-            );
-          })}
+          <ProductList ex={this.state.ex} datalength={10} />
         </div>
-        {this.state.productList.map(productWhy => {
-          return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <div style={{ backgroundColor: "#f7f7f7" }}>
-          {this.state.productList.map(productWhy => {
-            return (
-              <ProductList
-                title={productWhy.title}
-                product={productWhy.product}
-              />
-            );
-          })}
+          <ProductList ex={this.state.ex} datalength={10} />
         </div>
 
-        {this.state.productList.map(productWhy => {
-          return (
-            <ProductList
-              title={productWhy.title}
-              product={productWhy.product}
-            />
-          );
-        })}
+        <ProductList ex={this.state.ex} datalength={10} />
         <div style={{ backgroundColor: "#f7f7f7" }}>
-          {this.state.productList.map(productWhy => {
-            return (
-              <ProductList
-                title={productWhy.title}
-                product={productWhy.product}
-              />
-            );
-          })}
+          <ProductList ex={this.state.ex} datalength={10} />
         </div>
         {this.state.kulryList.map(productWhy => {
           return (
