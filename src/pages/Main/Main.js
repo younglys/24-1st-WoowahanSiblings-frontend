@@ -3,7 +3,7 @@ import AdList from "./AdList";
 import ProductList from "./ProductList";
 import Benefit from "./Benefit";
 import CenterAdd from "./CenterAdd";
-// import ButtonProductList from "./ButtonProductList";
+import ButtonProductList from "./ButtonProductList";
 import KulryList from "./KulryList";
 import Instagram from "./Instagram";
 import "./Main.scss";
@@ -13,53 +13,37 @@ export default class Main extends Component {
     super(props);
     this.state = {
       productList: [],
-      productListSecond: [],
-      productListThird: [],
+      benefitList: [],
+      noticList: [],
+      buttonList: [],
+      hotProductList: [],
+      giftProductList: [],
+      campingProductList: [],
+      yearProductList: [],
       kulryList: [],
       instagram: [],
-      ex: [],
-      datalength: 0,
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/firstMock.json", {
+    fetch("http://10.58.2.99:8000/products/lists", {
       method: "GET",
     })
       .then(res => res.json())
       .then(productData => {
         this.setState({
-          productList: productData,
+          productList: productData.products.slice(0, 10),
+          benefitList: productData.products.slice(11, 14),
+          noticList: productData.products.slice(15, 25),
+          buttonList: productData.products.slice(26, 36),
+          hotProductList: productData.products.slice(37, 47),
+          giftProductList: productData.products.slice(48, 58),
+          campingProductList: productData.products.slice(58, 68),
+          yearProductList: productData.products.slice(0, 10),
+          kulryList: productData.products.slice(11, 21),
         });
       });
-    fetch("http://localhost:3000/data/thirdMock.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(productData => {
-        this.setState({
-          productListSecond: productData,
-        });
-      });
-    fetch("http://localhost:3000/data/secondMock.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(productData => {
-        this.setState({
-          productListThird: productData,
-        });
-      });
-    fetch("http://localhost:3000/data/kulryList.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(productData => {
-        this.setState({
-          kulryList: productData,
-        });
-      });
-    fetch("http://localhost:3000/data/instagram.json", {
+    fetch("http://localhost:3000//data/instagram.json", {
       method: "GET",
     })
       .then(res => res.json())
@@ -68,46 +52,71 @@ export default class Main extends Component {
           instagram: productData,
         });
       });
-    fetch("http://localhost:3000/data/fiveMock.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(productData => {
-        this.setState({
-          ex: productData.products,
-          datalength: productData.products.length,
-        });
-      });
   }
 
   render() {
+    console.log(this.state.productList);
     return (
       <div className="main">
         <AdList />
-        <ProductList ex={this.state.ex} datalength={10} />
-        <Benefit />
-        <ProductList ex={this.state.ex} datalength={10} />
+        <ProductList
+          productList={this.state.productList}
+          datalength={10}
+          title={"이 상품 어때요?"}
+        />
+        <Benefit
+          benefitList={this.state.benefitList}
+          datalength={3}
+          title={"특가/혜택"}
+        />
+        <ProductList
+          productList={this.state.noticList}
+          datalength={10}
+          title={"놓치면 후회할 가격"}
+        />
         <CenterAdd />
-        <ProductList ex={this.state.ex} datalength={10} />
+        <ButtonProductList
+          productList={this.state.buttonList}
+          datalength={10}
+          title={"MD의 추천"}
+        />
         <CenterAdd />
-        <ProductList ex={this.state.ex} datalength={10} />
+        <ProductList
+          productList={this.state.hotProductList}
+          datalength={10}
+          title={"지금 가장 핫한 상품"}
+        />
         <div style={{ backgroundColor: "#f7f7f7" }}>
-          <ProductList ex={this.state.ex} datalength={10} />
+          <ProductList
+            productList={this.state.giftProductList}
+            datalength={10}
+            title={"추석 선물 추천, 뷰티 최대 40% 할인"}
+          />
         </div>
-        <ProductList ex={this.state.ex} datalength={10} />
+        <ProductList
+          productList={this.state.giftProductList}
+          datalength={10}
+          title={"마감세일"}
+        />
         <div style={{ backgroundColor: "#f7f7f7" }}>
-          <ProductList ex={this.state.ex} datalength={10} />
+          <ProductList
+            productList={this.state.campingProductList}
+            datalength={10}
+            title={"365일 최저가 도전"}
+          />
         </div>
+        <ProductList
+          productList={this.state.yearProductList}
+          datalength={10}
+          title={"설레는 캠핑"}
+        />
 
-        <ProductList ex={this.state.ex} datalength={10} />
-        <div style={{ backgroundColor: "#f7f7f7" }}>
-          <ProductList ex={this.state.ex} datalength={10} />
-        </div>
-        {this.state.kulryList.map(productWhy => {
-          return (
-            <KulryList title={productWhy.title} product={productWhy.product} />
-          );
-        })}
+        <KulryList
+          productList={this.state.kulryList}
+          datalength={10}
+          title={"컬리의 레시피"}
+        />
+
         {this.state.instagram.map(productWhy => {
           return (
             <Instagram title={productWhy.title} product={productWhy.product} />

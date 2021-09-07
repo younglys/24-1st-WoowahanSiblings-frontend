@@ -49,12 +49,11 @@ class ProductList extends Component {
   };
 
   render() {
-    console.log(this.props.datalength);
     return (
       <>
         <div className="productList">
           <div className="productStatus">
-            {/* <h3>{this.props.title}</h3> */}
+            <h3>{this.props.title} ></h3>
           </div>
         </div>
         <div className="listGoods">
@@ -65,16 +64,16 @@ class ProductList extends Component {
                   transform: `translateX(${this.state.slideCount}px)`,
                 }}
               >
-                {this.props.ex.map(productListData => {
+                {this.props.productList.map(productListData => {
                   return (
                     <li>
                       <a href="#">
-                        <img src={productListData.img} />
+                        <img src={productListData.image_list} />
                       </a>
                       <span className="productName">
                         <a href="#">{productListData.name} </a>
                       </span>
-                      <span className="price">{productListData.price}</span>
+                      <span className="price">{productListData.price}원</span>
                     </li>
                   );
                 })}

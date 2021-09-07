@@ -8,7 +8,7 @@ class KulryList extends Component {
     };
   }
 
-  imgLength = this.props.product.length;
+  imgLength = this.props.datalength;
   slideWidth = IMG_WIDTH * this.imgLength + (this.imgLength - 1) * IMG_GAP;
 
   hiddenedSlideWidth = this.slideWidth - 1068;
@@ -65,11 +65,11 @@ class KulryList extends Component {
                   transform: `translateX(${this.state.slideCount}px)`,
                 }}
               >
-                {this.props.product.map(productListData => {
+                {this.props.productList.map(productListData => {
                   return (
                     <li>
                       <a href="#">
-                        <img src={productListData.imges} />
+                        <img src={productListData.image_list} />
                       </a>
                       <span className="kulryproductName">
                         <a href="#">{productListData.name} </a>

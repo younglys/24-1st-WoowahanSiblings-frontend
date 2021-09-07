@@ -8,7 +8,7 @@ class ButtonProductList extends Component {
     };
   }
 
-  imgLength = this.props.product.length;
+  imgLength = this.props.dataLength;
   slideWidth = IMG_WIDTH * this.imgLength + (this.imgLength - 1) * IMG_GAP;
 
   hiddenedSlideWidth = this.slideWidth - 1068;
@@ -56,58 +56,73 @@ class ButtonProductList extends Component {
         </div>
         <div className="buttonCategory">
           <ul className="buttonListCategory">
-            {this.props.buttonList.map(productListData => {
+            {BUTTONLIST.map(buttonlist => {
               return (
                 <li>
-                  <a href="#">{productListData.buttontitle}</a>
+                  <a href="#">{buttonlist}</a>
                 </li>
               );
             })}
           </ul>
         </div>
-        <div className="listGoods">
-          <div className="boxWrapper">
-            <div className="boxViewport" style={{ width: this.slideWidth }}>
-              <ul
-                style={{
-                  transform: `translateX(${this.state.slideCount}px)`,
-                }}
-              >
-                {this.props.product.map(productListData => {
-                  return (
-                    <li>
-                      <a href="#">
-                        <img src={productListData.imges} />
-                      </a>
-                      <span className="productName">
-                        <a href="#">{productListData.name} </a>
-                      </span>
-                      <span className="price">{productListData.price}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-              {this.state.slideCount !== this.slideEnd && (
-                <div className="productLeftButton" onClick={this.handleNextBtn}>
-                  <img src="/images/leftbuttonx2.webp" />
-                </div>
-              )}
-              {!!this.state.slideCount && (
-                <div
-                  className="productRightButton"
-                  onClick={this.handlePrevBtn}
-                >
-                  <img src="/images/rightbuttonx2.webp" />
-                </div>
-              )}
+        <div className="listGoods" style={{ width: this.slideWidth }}>
+          <ul
+            style={{
+              transform: `translateX(${this.state.slideCount}px)`,
+            }}
+          >
+            {this.props.productList.map(productListData => {
+              return (
+                <li>
+                  <a href="#">
+                    <img src={productListData.image_list} />
+                  </a>
+                  <span className="productName">
+                    <a href="#">{productListData.name} </a>
+                  </span>
+                  <span className="price">{productListData.price}</span>
+                </li>
+              );
+            })}
+          </ul>
+          {this.state.slideCount !== this.slideEnd && (
+            <div className="productLeftButton" onClick={this.handleNextBtn}>
+              <img src="/images/leftbuttonx2.webp" />
             </div>
-          </div>
+          )}
+          {!!this.state.slideCount && (
+            <div className="productRightButton" onClick={this.handlePrevBtn}>
+              <img src="/images/rightbuttonx2.webp" />
+            </div>
+          )}
         </div>
       </>
     );
   }
 }
 
+const BUTTONLIST = [
+  "선물하기",
+  "추석 선물세트",
+  "채소",
+  "과일·견과·쌀",
+  "수산·해산·건어물",
+  "정육·계란",
+  "국·반찬·메인요리",
+  "샐러드·간편식",
+  "면·양념·요라",
+  "생수·음료·우유·커피",
+  "간식·과자·떡",
+  "치즈·베이커리·델리",
+  "건강식품",
+  "생활용품·리빙",
+  "스킨케어·메이크업",
+  "헤어·바디·구강",
+  "주방용품",
+  "가전제품",
+  "베이비·키즈",
+  "반려동물",
+];
 const IMG_WIDTH = 249;
 const IMG_GAP = 18;
 const IMG_SLIDE = 534;
