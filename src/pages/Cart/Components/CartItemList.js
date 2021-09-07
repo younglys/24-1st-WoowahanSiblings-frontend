@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import "./CartItemList.scss";
 
 class CartItemList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num: 1,
+    };
+  }
   clickDown = e => {
     this.state.num > 1 && this.setState({ num: this.state.num - 1 });
   };
