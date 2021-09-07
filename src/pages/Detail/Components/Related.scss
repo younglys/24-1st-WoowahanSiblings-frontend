@@ -3,7 +3,7 @@
 
   .wrapper {
     position: relative;
-    width: 1130px;
+    width: 1000px;
     margin: 0 auto;
 
     .relatedLine {
@@ -13,17 +13,23 @@
     }
 
     h3 {
+      padding: 5px 0;
       font-size: 15px;
       font-weight: 600;
-      padding: 5px 0;
     }
   }
 
   .relatedList {
     display: flex;
     justify-content: center;
-    padding: 15px 0;
+    overflow: hidden;
 
+    .relatedItemList {
+      display: flex;
+      overflow: hidden;
+      width: 950px;
+      padding: 15px 0;
+    }
     .relatedArrow {
       background-color: transparent;
       border: 1px solid transparent;

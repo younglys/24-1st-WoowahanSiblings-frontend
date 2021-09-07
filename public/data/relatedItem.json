@@ -1,0 +1,37 @@
+[
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1614336215203-05a588f74627?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+    "goodsName": "브로콜리",
+    "goodsPrice": 1299
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1614336215203-05a588f74627?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+    "goodsName": "브로콜리",
+    "goodsPrice": 1980
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1614336215203-05a588f74627?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+    "goodsName": "브로콜리",
+    "goodsPrice": 23222
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1614336215203-05a588f74627?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+    "goodsName": "브로콜리",
+    "goodsPrice": 1242
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1552661397-4233881ea8c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80",
+    "goodsName": "강원도 햇감자 3kg",
+    "goodsPrice": 7553
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1552661397-4233881ea8c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80",
+    "goodsName": "강원도 햇감자 3kg",
+    "goodsPrice": 23154
+  },
+  {
+    "imgSrc": "https://images.unsplash.com/photo-1552661397-4233881ea8c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80",
+    "goodsName": "강원도 햇감자 3kg",
+    "goodsPrice": 1123
+  }
+]

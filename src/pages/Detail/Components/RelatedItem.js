@@ -2,21 +2,36 @@ import React, { Component } from "react";
 import "./RelatedItem.scss";
 
 class RelatedItem extends Component {
+  constructor() {
+    super();
+    this.state = {
+      relatedItem: [],
+    };
+  }
+  componentDidMount() {
+    fetch(`http://localhost:3000/data/relatedItem.json`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          relatedItem: res,
+        });
+      });
+  }
   render() {
-    return (
+    const { relatedItem } = this.state;
+
+    return relatedItem.map(item => (
       <li className="relatedItem">
-        <img
-          src="https://images.unsplash.com/photo-1560252117-15c5d204a4a8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          alt="연관 상품"
-        />
+        <img src={item.imgSrc} alt="연관 상품" />
         <div className="itemInfo">
-          <p className="itemTitle">친환경 무 1조각</p>
+          <p className="itemTitle">{item.goodsName}</p>
           <p className="itemPrice">
-            1,750<span className="won">원</span>
+            {item.goodsPrice}
+            <span className="won">원</span>
           </p>
         </div>
       </li>
-    );
+    ));
   }
 }
 

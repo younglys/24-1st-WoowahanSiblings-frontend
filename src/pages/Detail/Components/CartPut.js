@@ -1,8 +1,36 @@
 import React, { Component } from "react";
-import CalculateAmount from "../../../components/CalculateAmount/CalculateAmount";
 import "./CartPut.scss";
 
 class CartPut extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      sub_name: "",
+      price: 0,
+      discount: 0,
+      sales_unit: "",
+      weight: "",
+      shipping_type: "",
+      origin: "",
+      package_type: "",
+      num: 1,
+    };
+  }
+
+  clickDown = e => {
+    this.state.num > 1 &&
+      this.setState(state => {
+        return { num: state.num - 1 };
+      });
+  };
+
+  clickUp = e => {
+    this.setState(state => {
+      return { num: state.num + 1 };
+    });
+  };
+
   render() {
     const {
       name,
@@ -31,11 +59,11 @@ class CartPut extends Component {
           <div className="priceInfo">
             <p className="dcInfo">회원할인가</p>
             <span className="dcPrice">
-              17,550
+              {(price * (1 - discount)).toLocaleString()}
               <span className="won">원</span>
             </span>
-            <span className="dcPercent">{discount}%</span>
-            <a className="price" href="/">
+            <span className="dcPercent">{discount * 100}%</span>
+            <a className="originPrice" href="/">
               {price}
               <span className="won">원</span>
             </a>
@@ -105,7 +133,15 @@ class CartPut extends Component {
             <dl className="orderQuantity">
               <dt className="tit">구매수량</dt>
               <div className="oderQuantity">
-                <CalculateAmount />
+                <div className="calculator">
+                  <button className="amountMinus" onClick={this.clickDown}>
+                    <i className="fas fa-minus" />
+                  </button>
+                  <span className="amountValue">{this.state.num}</span>
+                  <button className="amountPlus" onClick={this.clickUp}>
+                    <i className="fas fa-plus" />
+                  </button>
+                </div>
               </div>
             </dl>
           </div>
@@ -114,7 +150,9 @@ class CartPut extends Component {
             <div className="totalPrice">
               <span className="text">총 상품 금액 :</span>
               <p className="orderPrice">
-                <span className="price">45,000</span>
+                <span className="price">
+                  {(price * this.state.num).toLocaleString()}
+                </span>
                 <span className="won">원</span>
               </p>
 

@@ -42,7 +42,7 @@
     font-size: 25px;
   }
 
-  .price {
+  .originPrice {
     display: block;
     color: grey;
     text-decoration: line-through;
@@ -95,6 +95,20 @@
       .wrapper {
         .smallDesc {
           font-size: 14px;
+        }
+      }
+
+      .calculator {
+        border: 1px solid #ddd;
+
+        .amountValue {
+          padding: 20px;
+          font-size: 18px;
+        }
+
+        button {
+          background-color: transparent;
+          border: none;
         }
       }
     }
