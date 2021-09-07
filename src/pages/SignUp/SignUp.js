@@ -1,3 +1,4 @@
+import { check } from "prettier";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.scss";
@@ -11,15 +12,32 @@ class SignUp extends Component {
       email: "",
       phoneNumber: "",
       address: "",
-      showing: false,
+      isIdshowing: false,
+      isPwshowing: false,
+      isPwCheckshowing: false,
+      isIdColor: false,
+      isPwColor: false,
+      isPwCheckColor: false,
+      isPwReCheckColor: false,
       checkBtn: false,
     };
   }
 
   handleShowInputCondition = e => {
-    //console.log("e.target", e.target);
     this.setState({
-      showing: true,
+      isIdShowing: true,
+    });
+  };
+
+  handleShowPwInputCondition = e => {
+    this.setState({
+      isPwShowing: true,
+    });
+  };
+
+  handleShowPwCheckInputCondition = e => {
+    this.setState({
+      isPwCheckShowing: true,
     });
   };
 
@@ -37,6 +55,70 @@ class SignUp extends Component {
     });
   };
 
+  handleIdPassCondition = e => {
+    if (e.target.value.length > 5) {
+      this.setState({
+        isIdColor: true,
+      });
+    } else {
+      this.setState({
+        isIdColor: false,
+      });
+    }
+  };
+
+  handlePwPassCondition = e => {
+    if (e.target.value.length > 9) {
+      this.setState({
+        isPwColor: true,
+      });
+    } else {
+      this.setState({
+        isPwColor: false,
+      });
+    }
+
+    const check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,30}$/; //영문,숫자
+    const check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,30}$/; //영문,특수문자
+    const check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,30}$/; //특수문자, 숫자
+    const check4 = /^(?=.*[A-Z])(?=.*[0-9])(?!.*?\d{4}).{10,30}?$/; //3개 연속 불가
+
+    if (
+      check1.test(e.target.value) &&
+      check2.test(e.target.value) &&
+      check3.test(e.target.value) &&
+      check4.test(e.target.value)
+    ) {
+      this.setState({
+        isPwCheckColor: true,
+      });
+    } else {
+      this.setState({
+        isPwCheckColor: false,
+      });
+    }
+
+    /* const pwRegex =
+      /^(?=.*[A-Z])(?=.*[0-9])(?!.*?\d{4})(?=.*[a-z])(?=.*[!@#$%^*+=-])$/; */
+
+    /*
+    const validEmail = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
+    const validPassword = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
+    */
+  };
+
+  handlePwCheck = e => {
+    if (this.state.password === e.target.value) {
+      this.setState({
+        isPwReCheckColor: true,
+      });
+    } else {
+      this.setState({
+        isPwReCheckColor: false,
+      });
+    }
+  };
+
   checkIdPass = () => {};
 
   handleSignup = () => {
@@ -47,6 +129,7 @@ class SignUp extends Component {
       // headers: {
       //   Accept: "application/json",
       //   "Content-type": "application/json",
+      //   "Authorization: localStorage.getItem('token')"
       // },
       body: JSON.stringify({
         account_name: id,
@@ -76,7 +159,15 @@ class SignUp extends Component {
   };
 
   render() {
-    const { showing } = this.state;
+    const {
+      isIdShowing,
+      isPwShowing,
+      isPwCheckShowing,
+      isIdColor,
+      isPwColor,
+      isPwCheckColor,
+      isPwReCheckColor,
+    } = this.state;
     console.log(this.state);
     let btnStatus = this.state.checkBtn ? "check" : "uncheck";
     return (
@@ -94,7 +185,7 @@ class SignUp extends Component {
                   <td>
                     <input
                       onClick={this.handleShowInputCondition}
-                      onKeyPress={this.checkIdPassKey}
+                      onChange={this.handleIdPassCondition}
                       type="text"
                       name="id"
                       autoComplete="off"
@@ -103,10 +194,15 @@ class SignUp extends Component {
                     <button type="button" onClick={this.checkIdPass}>
                       중복확인
                     </button>
-                    {showing && (
+                    {isIdShowing && (
                       <div className="inputConditionWrapper">
                         {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
-                        <p className="inputCondition">
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color: isIdColor === false ? "red" : "green",
+                          }}
+                        >
                           6자 이상의 영문 혹은 영문과 숫자를 조합
                         </p>
                         <p className="inputCondition">아이디 중복확인</p>
@@ -118,21 +214,39 @@ class SignUp extends Component {
                   <th className="requiredCategory">비밀번호</th>
                   <td>
                     <input
-                      onClick={this.handleShowInputCondition}
+                      onClick={this.handleShowPwInputCondition}
+                      onChange={this.handlePwPassCondition}
                       type="password"
                       name="password"
                       autoComplete="off"
                       placeholder="비밀번호를 입력해주세요"
                     />
-                    {showing && (
+                    {isPwShowing && (
                       <div className="inputConditionWrapper">
                         {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
-                        <p className="inputCondition">10자 이상 입력</p>
-                        <p className="inputCondition">
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color: isPwColor === false ? "red" : "green",
+                          }}
+                        >
+                          10자 이상 입력
+                        </p>
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color: isPwCheckColor === false ? "red" : "blue",
+                          }}
+                        >
                           영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상
                           조합
                         </p>
-                        <p className="inputCondition">
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color: isPwCheckColor === false ? "red" : "blue",
+                          }}
+                        >
                           동일한 숫자 3개 이상 연속 사용 불가
                         </p>
                       </div>
@@ -143,15 +257,21 @@ class SignUp extends Component {
                   <th className="requiredCategory">비밀번호확인</th>
                   <td>
                     <input
-                      onClick={this.handleShowInputCondition}
+                      onClick={this.handleShowPwCheckInputCondition}
+                      onChange={this.handlePwCheck}
                       type="password"
                       name="passwordConfirmation"
                       autoComplete="off"
                       placeholder="비밀번호를 한번 더 입력해주세요"
                     />
-                    {showing && (
+                    {isPwCheckShowing && (
                       <div className="inputConditionWrapper">
-                        <p className="inputCondition">
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color: isPwReCheckColor === false ? "red" : "green",
+                          }}
+                        >
                           동일한 비밀번호를 입력해주세요.
                         </p>
                       </div>
