@@ -37,15 +37,17 @@ class SignUp extends Component {
     });
   };
 
+  checkIdPass = () => {};
+
   handleSignup = () => {
     const { id, password, name, email, phoneNumber, address, gender, birth } =
       this.state;
-    fetch("http://10.58.2.140:8000/user/signup", {
+    fetch("http://10.58.4.207:8000/bbmarket/signup", {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      },
+      // headers: {
+      //   Accept: "application/json",
+      //   "Content-type": "application/json",
+      // },
       body: JSON.stringify({
         account_name: id,
         password: password,
@@ -60,17 +62,13 @@ class SignUp extends Component {
       .then(res => res.json())
       .then(res => {
         console.log("결과: ", res);
-        //this.setState({ name: res.name });
         if (res.token) {
-          // (res.MESSAGE === "SUCCESS")
+          console.log(res.MESSAGE);
           localStorage.setItem("token", res.token);
           alert(
-            `${this.state.account_name}님 별밤마켓에 오신 것을 환영합니다!`
+            `${this.state.account_name}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`
           );
           this.props.history.push("/");
-        } else if (res.MESSAGE === "") {
-          // 아이디 중복확인
-          alert("현재 사용중인 아이디입니다.");
         } else {
           alert("필수 입력 정보를 모두 입력해주세요.");
         }
@@ -96,13 +94,15 @@ class SignUp extends Component {
                   <td>
                     <input
                       onClick={this.handleShowInputCondition}
-                      onKeyPress={this.checkIdPass}
+                      onKeyPress={this.checkIdPassKey}
                       type="text"
                       name="id"
                       autoComplete="off"
                       placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                     />
-                    <button type="button">중복확인</button>
+                    <button type="button" onClick={this.checkIdPass}>
+                      중복확인
+                    </button>
                     {showing && (
                       <div className="inputConditionWrapper">
                         {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
