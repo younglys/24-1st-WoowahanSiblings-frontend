@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import "./CartItemList.scss";
 
 class CartItemList extends Component {
+  clickDown = e => {
+    this.state.num > 1 && this.setState({ num: this.state.num - 1 });
+  };
+
+  clickUp = e => {
+    this.setState(state => {
+      return { num: state.num + 1 };
+    });
+  };
   render() {
     return (
       // <div className="empty">장바구니에 담긴 상품이 없습니다.</div>;
@@ -28,6 +37,15 @@ class CartItemList extends Component {
                 <span className="goodsTitle">미국산 프라임등급 살치살 5kg</span>
               </div>
               <div className="right">
+                <div className="calculator">
+                  <button className="amountMinus" onClick={this.clickDown}>
+                    <i className="fas fa-minus" />
+                  </button>
+                  <span className="amountValue">{this.state.num}</span>
+                  <button className="amountPlus" onClick={this.clickUp}>
+                    <i className="fas fa-plus" />
+                  </button>
+                </div>
                 <p>
                   2,680 <span className="won">원</span>
                 </p>
