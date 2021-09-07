@@ -3,7 +3,6 @@ import RelatedItem from "./RelatedItem";
 import "./Related.scss";
 
 class GoodsRelatedList extends Component {
-  rightArrow = e => {};
   render() {
     return (
       <div className="goodsRelated">

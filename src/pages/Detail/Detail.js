@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Related from "./Components/Related";
 import CartPut from "./Components/CartPut";
+import Related from "./Components/Related";
 import GoodsView from "./Components/GoodsView";
 import HappyCenter from "./Components/HappyCenter";
 import "./Detail.scss";
@@ -36,7 +36,7 @@ class Detail extends Component {
     } = this.state.data;
 
     return (
-      <div className="Detail">
+      <div className="detail">
         <CartPut
           name={name}
           sub_name={sub_name}

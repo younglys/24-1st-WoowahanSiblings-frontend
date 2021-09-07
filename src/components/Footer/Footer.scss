@@ -1,0 +1,166 @@
+.footer {
+  display: flex;
+  margin: 0 auto;
+
+  .footerInfo {
+    width: 534px;
+    display: flex;
+    flex-direction: column;
+
+    .infoCustomerCenter {
+      height: 65px;
+      padding: 29px 0 2px;
+      font-weight: 700;
+      font-size: 20px;
+      color: #333;
+      line-height: 20px;
+    }
+
+    .infoNumber {
+      display: flex;
+      height: 65px;
+
+      div {
+        padding-top: 4px;
+        font-weight: 800;
+        font-size: 28px;
+        color: #333;
+        width: 145px;
+        line-height: 36px;
+        letter-spacing: -0.5px;
+        white-space: nowrap;
+      }
+
+      .operatingHours {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-size: 14px;
+          color: #333;
+          line-height: 22px;
+          letter-spacing: -0.2px;
+        }
+      }
+    }
+
+    .kakao {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      height: 65px;
+      .kakaoBox {
+        height: 40px;
+        padding-top: 7px;
+        margin-top: 3px;
+        border: 1px solid #e3e3e3;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+        line-height: 22px;
+        text-align: center;
+        width: 125px;
+      }
+
+      .kakaoOperatingHours {
+        display: flex;
+        flex-direction: column;
+        margin-left: 23px;
+        font-size: 14px;
+        line-height: 1.5;
+        .infoTextColor {
+          color: #999;
+        }
+      }
+    }
+
+    .oneAndOne {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      height: 65px;
+
+      .oneAndOneBox {
+        height: 40px;
+        padding-top: 7px;
+        margin-top: 3px;
+        border: 1px solid #e3e3e3;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+        line-height: 22px;
+        text-align: center;
+        width: 125px;
+      }
+
+      .oneAndOneOperatingHours {
+        display: flex;
+        flex-direction: column;
+        margin-left: 23px;
+        font-size: 14px;
+        line-height: 1.5;
+        .infoTextColor {
+          color: #999;
+        }
+      }
+    }
+
+    .bulkOrder {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      height: 65px;
+
+      .bulkOrderBox {
+        height: 40px;
+        padding-top: 7px;
+        margin-top: 3px;
+        border: 1px solid #e3e3e3;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+        line-height: 22px;
+        text-align: center;
+        width: 125px;
+      }
+
+      .bulkOrderOperatingHours {
+        display: flex;
+        flex-direction: column;
+        margin-left: 23px;
+        font-size: 14px;
+        line-height: 1.5;
+
+        .infoTextColor {
+          color: #999;
+        }
+      }
+    }
+  }
+
+  .company {
+    width: 534px;
+    display: flex;
+    flex-direction: column;
+
+    .companyList {
+      margin-top: 38px;
+
+      li {
+        font-size: 14px;
+        margin-left: 14px;
+        display: inline-block;
+      }
+    }
+
+    .companyInfo {
+      margin-top: 42px;
+      margin-left: 15px;
+      line-height: 1.8;
+      color: #999;
+    }
+  }
+}

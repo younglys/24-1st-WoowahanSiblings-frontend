@@ -19,10 +19,7 @@ class CartPut extends Component {
   }
 
   clickDown = e => {
-    this.state.num > 1 &&
-      this.setState(state => {
-        return { num: state.num - 1 };
-      });
+    this.state.num > 1 && this.setState({ num: this.state.num - 1 });
   };
 
   clickUp = e => {
@@ -151,7 +148,7 @@ class CartPut extends Component {
               <span className="text">총 상품 금액 :</span>
               <p className="orderPrice">
                 <span className="price">
-                  {(price * this.state.num).toLocaleString()}
+                  {(price * (1 - discount) * this.state.num).toLocaleString()}
                 </span>
                 <span className="won">원</span>
               </p>

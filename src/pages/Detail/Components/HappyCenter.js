@@ -15,10 +15,6 @@ class HappyCenter extends Component {
   };
 
   render() {
-    // const foldBarBtn = document.querySelector(".asked");
-    // const foldBtnTxt = document.querySelector(".foldBtnTxt");
-    // const foldBtnIco = document.querySelector(".foldBtnIco");
-
     return (
       <div className="happyCenter">
         <div className="happy">
@@ -64,16 +60,16 @@ class HappyCenter extends Component {
             </div>
             <div className="fstRight">
               <button className="asked" onClick={this.unfoldBtn}>
-                {this.state.isUnfold ? (
-                  <span className="foldBtnTxt">닫기</span>
-                ) : (
-                  <span className="foldBtnTxt">자세히 보기</span>
-                )}
-                {this.state.isUnfold ? (
-                  <i className="fas fa-chevron-up" />
-                ) : (
-                  <i className="fas fa-chevron-down" />
-                )}
+                <span className="foldBtnTxt">
+                  {this.state.isUnfold ? "닫기" : "자세히 보기"}
+                </span>
+                <i
+                  className={
+                    this.state.isUnfold
+                      ? "fas fa-chevron-up"
+                      : "fas fa-chevron-down"
+                  }
+                />
               </button>
             </div>
           </div>
