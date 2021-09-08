@@ -78,7 +78,7 @@ class ProductList extends Component {
                       <img src={productListData.image_list} />
 
                       <span className="productName">
-                        <Link to="/detail">{productListData.name} </Link>
+                        {productListData.name}
                       </span>
                       <span className="price">{productListData.price}원</span>
                     </li>

@@ -68,11 +68,11 @@ class KulryList extends Component {
                 {this.props.productList.map(productListData => {
                   return (
                     <li>
-                      <a href="#">
+                      <div>
                         <img src={productListData.image_list} />
-                      </a>
+                      </div>
                       <span className="kulryproductName">
-                        <a href="#">{productListData.name} </a>
+                        {productListData.name}
                       </span>
                     </li>
                   );

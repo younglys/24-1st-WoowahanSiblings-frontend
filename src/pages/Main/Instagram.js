@@ -69,9 +69,9 @@ class Instagram extends Component {
                 {this.props.product.map(productListData => {
                   return (
                     <li>
-                      <a href="#">
+                      <div>
                         <img src={productListData.imges} />
-                      </a>
+                      </div>
                     </li>
                   );
                 })}

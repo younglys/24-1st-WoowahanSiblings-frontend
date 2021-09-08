@@ -60,7 +60,7 @@ class ButtonProductList extends Component {
             {BUTTONLIST.map(buttonlist => {
               return (
                 <li>
-                  <a href="#">{buttonlist}</a>
+                  <div>{buttonlist}</div>
                 </li>
               );
             })}
@@ -75,13 +75,11 @@ class ButtonProductList extends Component {
             {this.props.productList.map(productListData => {
               return (
                 <li>
-                  <Link>
+                  <div>
                     <img src={productListData.image_list} />
-                  </Link>
-                  <span className="productName">
-                    <a href="#">{productListData.name} </a>
-                  </span>
-                  <span className="price">{productListData.price}</span>
+                  </div>
+                  <span className="productName">{productListData.name}</span>
+                  <span className="price">{productListData.price}원</span>
                 </li>
               );
             })}
