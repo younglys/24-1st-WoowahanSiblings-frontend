@@ -21,7 +21,7 @@ class GoodsRelatedList extends Component {
       });
   }
 
-  leftArrow = () => {
+  clickLeftArrow = () => {
     const { currentOffsetX } = this.state;
 
     if (currentOffsetX < 0) {
@@ -31,7 +31,7 @@ class GoodsRelatedList extends Component {
     }
   };
 
-  rightArrow = () => {
+  clickRightArrow = () => {
     const { currentOffsetX, relatedItem } = this.state;
 
     if (currentOffsetX > (relatedItem.length - 6) * -RELATED_WIDTH) {

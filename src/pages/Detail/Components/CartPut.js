@@ -28,7 +28,7 @@ class CartPut extends Component {
       shipping_type,
       origin,
       package_type,
-      information,
+      infomation,
       created_at,
       updated_at,
       sub_category,
@@ -44,7 +44,7 @@ class CartPut extends Component {
         <div className="innerView">
           <p className="goodsName">
             <strong className="name">{name}</strong>
-            <span className="shortDesc">{information}</span>
+            <span className="shortDesc">{infomation}</span>
           </p>
           <div className="priceInfo">
             <p className="dcInfo">회원할인가</p>
@@ -98,6 +98,7 @@ class CartPut extends Component {
                 바랍니다.
               </dd>
             </dl>
+
             <dl className="infoList">
               <dt className="tit">알러지</dt>
               <dd className="desc">{allergy_list}</dd>

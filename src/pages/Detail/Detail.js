@@ -14,7 +14,7 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.0.49:8000/products/50`)
+    fetch(`http://10.58.0.43:8000/products/1`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -31,7 +31,7 @@ class Detail extends Component {
       shipping_type,
       origin,
       package_type,
-      information,
+      infomation,
       created_at,
       updated_at,
       sub_category,
@@ -51,7 +51,7 @@ class Detail extends Component {
           shipping_type={shipping_type && shipping_type}
           origin={origin && origin}
           package_type={package_type && package_type}
-          information={information && information}
+          infomation={infomation && infomation}
           created_at={created_at && created_at}
           updated_at={updated_at && updated_at}
           sub_category={sub_category && sub_category}
