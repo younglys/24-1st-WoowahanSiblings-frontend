@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Route, Link } from "react-router-dom";
 
 class TopLayout extends Component {
   render() {
     return (
       <div className="topLayout">
         <div className="kurlyMarket">
-          <a href="#">
+          <Link to="/">
             <img alt="delivery" src="/images/deli.webp" />
-          </a>
+          </Link>
         </div>
         <ul className="signUpList">
           <li className="signUpListText">
@@ -19,7 +20,7 @@ class TopLayout extends Component {
             <div />
           </li>
           <li className="signUpListText">
-            <a href="#">로그인</a>
+            <Link to="/login">로그인</Link>
           </li>
           <li className="signUpListLine">
             <div />
