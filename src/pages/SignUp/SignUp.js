@@ -12,8 +12,8 @@ class SignUp extends Component {
       phoneNumber: "",
       address: "",
       gender: "",
-      usableId: false, // 사용가능한 아이디가 true인 경우 가입 가능
-      usableEmail: false, // 사용가능한 이메일이 true인 경우 가입 가능
+      usableId: false,
+      usableEmail: false,
       isIdshowing: false,
       isPwshowing: false,
       isPwCheckshowing: false,
@@ -110,7 +110,6 @@ class SignUp extends Component {
 
   checkId = e => {
     e.preventDefault();
-    // 백엔드에서 설정한 ip주소, parameter값 확인하기!
     fetch("http://10.58.6.197:8000/users/check_id", {
       method: "POST",
       headers: {
@@ -119,10 +118,9 @@ class SignUp extends Component {
       body: JSON.stringify({ id: this.state.id }),
     }).then(res => {
       if (res.status === 200) {
-        alert("현재 사용 가능한 아이디 입니다."); // 백엔드로 보낸 데이터 결과 200 일 경우
-        this.setState({ usableId: true }); // 사용 가능한 아이디는 true로 변경
+        alert("현재 사용 가능한 아이디 입니다.");
+        this.setState({ usableId: true });
       } else if (res.status === 401) {
-        // 백엔드에서 설정한 code 확인하기!
         alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
       }
     });
@@ -130,7 +128,6 @@ class SignUp extends Component {
 
   checkEmail = e => {
     e.preventDefault();
-    // 백엔드에서 설정한 ip주소, parameter값 확인하기!
     fetch("http://10.58.6.197:8000/users/check_email", {
       method: "POST",
       headers: {
@@ -142,7 +139,6 @@ class SignUp extends Component {
         alert("현재 사용 가능한 이메일 입니다.");
         this.setState({ usableEmail: true });
       } else if (res.status === 401) {
-        // 백엔드에서 설정한 code 확인하기!
         alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력해주세요.");
       }
     });
