@@ -1,0 +1,93 @@
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 18px;
+}
+
+.preOrderList {
+  padding: 10px 10px;
+
+  .packageType {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+
+    .packageTypeLeft {
+      font-size: 20px;
+
+      .fa-tint {
+        padding-right: 15px;
+        color: #007fff;
+      }
+    }
+
+    .packageTypeRight {
+      font-size: 20px;
+
+      .fa-chevron-up {
+        color: #5e0080;
+      }
+    }
+  }
+
+  .cartListItemWrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 0;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      i {
+        padding: 0 10px;
+        color: #5e0080;
+        font-size: 20px;
+      }
+
+      img {
+        width: 60px;
+        height: 80px;
+      }
+      .goodsTitle {
+        padding-left: 20px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: 18px;
+        width: 120px;
+        text-align: center;
+      }
+
+      .fa-times {
+        font-size: 20px;
+      }
+
+      .calculator {
+        border: 1px solid #ddd;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+
+        .amountValue {
+          font-size: 18px;
+        }
+
+        button {
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
+  }
+}
