@@ -20,12 +20,13 @@ class Cart extends Component {
       });
   }
   render() {
+    const listLength = this.state.cartList.length;
     return (
       <div className="cart">
         <div className="titPage">장바구니</div>
         <div className="cartContent">
           <div className="cartItemList">
-            <CartSelect />
+            <CartSelect length={listLength} />
             <div className="innerCart">
               {this.state.cartList.map(item => {
                 return (
@@ -37,7 +38,7 @@ class Cart extends Component {
                 );
               })}
             </div>
-            <CartSelect />
+            <CartSelect length={listLength} />
           </div>
           <div className="cartResult">
             <div className="cartDelivery">
