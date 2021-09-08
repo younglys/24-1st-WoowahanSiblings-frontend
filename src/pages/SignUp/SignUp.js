@@ -12,6 +12,8 @@ class SignUp extends Component {
       phoneNumber: "",
       address: "",
       gender: "",
+      usableId: false, // 사용가능한 아이디가 true인 경우 가입 가능
+      usableEmail: false, // 사용가능한 이메일이 true인 경우 가입 가능
       isIdshowing: false,
       isPwshowing: false,
       isPwCheckshowing: false,
@@ -56,7 +58,9 @@ class SignUp extends Component {
   };
 
   handleIdPassCondition = e => {
-    if (e.target.value.length > 5) {
+    const idCheck = /^[a-z]+[a-z0-9]{5,16}$/;
+
+    if (e.target.value.length > 5 && idCheck.test(e.target.value)) {
       this.setState({
         isIdColor: true,
       });
@@ -78,7 +82,8 @@ class SignUp extends Component {
       });
     }
 
-    const pwCheck = /^(?=.*[^a-zA-Z])(?=.*[@#$%^*+=-])(?=.*[0-9]).{10,16}$/;
+    const pwCheck =
+      /^(?=.*[A-Z])(?=.*[0-9])(?!.*?\d{4})(?=.*[a-z])(?=.*[!@#$%^*+=-]).{9,16}$/;
 
     if (pwCheck.test(e.target.value)) {
       this.setState({
@@ -103,7 +108,45 @@ class SignUp extends Component {
     }
   };
 
-  checkIdPass = () => {};
+  checkId = e => {
+    e.preventDefault();
+    // 백엔드에서 설정한 ip주소, parameter값 확인하기!
+    fetch("http://10.58.6.197:8000/users/check_id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: this.state.id }),
+    }).then(res => {
+      if (res.status === 200) {
+        alert("현재 사용 가능한 아이디 입니다."); // 백엔드로 보낸 데이터 결과 200 일 경우
+        this.setState({ usableId: true }); // 사용 가능한 아이디는 true로 변경
+      } else if (res.status === 401) {
+        // 백엔드에서 설정한 code 확인하기!
+        alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+      }
+    });
+  };
+
+  checkEmail = e => {
+    e.preventDefault();
+    // 백엔드에서 설정한 ip주소, parameter값 확인하기!
+    fetch("http://10.58.6.197:8000/users/check_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: this.state.email }),
+    }).then(res => {
+      if (res.status === 200) {
+        alert("현재 사용 가능한 이메일 입니다.");
+        this.setState({ usableEmail: true });
+      } else if (res.status === 401) {
+        // 백엔드에서 설정한 code 확인하기!
+        alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력해주세요.");
+      }
+    });
+  };
 
   handleSignup = () => {
     const {
@@ -134,13 +177,21 @@ class SignUp extends Component {
       .then(res => res.json())
       .then(res => {
         console.log("결과: ", res);
-        if (res.message === "SUCCESS") {
-          alert(
-            `${this.state.id}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`
-          );
+
+        const messages = {
+          SUCCESS: `${this.state.id}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`,
+          INVALID_ACCOUNT:
+            "가입이 불가합니다. 아이디를 형식에 맞게 다시 입력해주세요.",
+          INVALID_PASSWORD:
+            "가입이 불가합니다. 비밀번호를 형식에 맞게 다시 입력해주세요.",
+          INVALID_EMAIL:
+            "가입이 불가합니다. 이메일을 형식에 맞게 다시 입력해주세요.",
+        };
+        alert(messages[res.message]);
+
+        if (res.Token) {
+          localStorage.setItem("token", res.Token);
           this.props.history.push("/");
-        } else {
-          alert("필수 입력 정보를 모두 입력해주세요.");
         }
       });
   };
@@ -178,7 +229,7 @@ class SignUp extends Component {
                       autoComplete="off"
                       placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                     />
-                    <button type="button" onClick={this.checkIdPass}>
+                    <button type="button" onClick={this.checkId}>
                       중복확인
                     </button>
                     {isIdShowing && (
@@ -189,7 +240,7 @@ class SignUp extends Component {
                             color: isIdColor === false ? "red" : "green",
                           }}
                         >
-                          6자 이상의 영문 혹은 영문과 숫자를 조합
+                          6자 이상의 영문 혹은 영문과 숫자를 조합(영문부터 작성)
                         </p>
                         <p className="inputCondition">아이디 중복확인</p>
                       </div>
@@ -281,7 +332,9 @@ class SignUp extends Component {
                       name="email"
                       placeholder="예: byeolbammarket@bb.com"
                     />
-                    <button type="button">중복확인</button>
+                    <button type="button" onClick={this.checkEmail}>
+                      중복확인
+                    </button>
                   </td>
                 </tr>
                 <tr>
