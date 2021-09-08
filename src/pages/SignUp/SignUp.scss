@@ -1,0 +1,283 @@
+.signUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  main {
+    width: 800px;
+    padding: 80px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 15px;
+    font-weight: 600;
+
+    .formHeader {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid #000000;
+
+      h1 {
+        padding: 50px 0;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .requirement {
+        margin-bottom: 10px;
+        color: #666666;
+        font-size: 12px;
+        text-align: right;
+
+        &::before {
+          content: "*";
+          color: #ff0000;
+        }
+      }
+    }
+
+    form {
+      table {
+        tbody {
+          border-bottom: 1px solid #eeeeee;
+          th {
+            width: 20%;
+            padding: 20px 0 0 15px;
+            font-size: 13px;
+            text-align: left;
+          }
+          .requiredCategory::after {
+            content: "*";
+            color: #ff0000;
+          }
+          td {
+            width: 75%;
+            padding: 10px 0;
+
+            input[type="text"],
+            input[type="password"],
+            input[type="email"] {
+              width: 70%;
+              padding: 15px;
+              margin-right: 10px;
+              border: 1px solid #cccccc;
+              border-radius: 3px;
+
+              &::placeholder {
+                color: #cccccc;
+                font-size: 13px;
+                font-weight: 600;
+              }
+            }
+
+            button {
+              width: 130px;
+              padding: 12px;
+              color: #5f0080;
+              background-color: transparent;
+              border: 1px solid #5f0080;
+              border-radius: 3px;
+              font-size: 15px;
+              font-weight: 600;
+              cursor: pointer;
+            }
+
+            .addrSearchBtn {
+              width: 70%;
+
+              .fa-search {
+                width: 15px;
+                height: 15px;
+                color: #5f0080;
+              }
+            }
+
+            .inputConditionWrapper {
+              margin: 10px 0 15px;
+              color: #666666;
+
+              .inputCondition {
+                padding: 3px 0;
+                font-size: 12px;
+
+                &::before {
+                  content: "•";
+                  margin-right: 3px;
+                }
+              }
+
+              .inputDescription {
+                margin-top: 5px;
+                font-size: 12px;
+              }
+            }
+
+            .birth {
+              width: 350px;
+              border: 1px solid #cccccc;
+              border-radius: 3px;
+              text-align: center;
+
+              .birthInput {
+                width: 100px;
+                margin: 0;
+                border: none;
+                text-align: center;
+                outline: none;
+              }
+
+              .birthDateInput {
+                width: 160px;
+                padding: 12px;
+                border: none;
+                color: #666666;
+                outline: none;
+              }
+
+              span {
+                color: #cccccc;
+              }
+            }
+          }
+
+          .options {
+            display: flex;
+            width: 400px;
+
+            .genderOptions {
+              width: 25%;
+              margin-right: 30px;
+
+              input[type="radio"] {
+                width: 20px;
+              }
+
+              .genderOption {
+                font-size: 13px;
+              }
+            }
+
+            .additionOptions {
+              width: 50%;
+              margin-bottom: 20px;
+
+              input[type="radio"] {
+                width: 20px;
+              }
+
+              .additionOption {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+
+        .accessTerms {
+          padding: 20px 0;
+          border-top: 2px solid #000000;
+
+          .requiredCategory::after {
+            content: "*";
+            color: #ff0000;
+          }
+
+          .uncheck {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            padding: 4px 3px;
+            border-radius: 50%;
+            border: 1px solid #cccccc;
+            border-radius: 50%;
+
+            .fa-check {
+              color: #cccccc;
+            }
+          }
+
+          .check {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            padding: 4px 3px;
+            background-color: #5f0080;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+
+            .fa-check {
+              color: #ffffff;
+            }
+          }
+        }
+
+        strong {
+          font-size: 18px;
+        }
+
+        .terms {
+          position: relative;
+          padding: 15px 0;
+
+          &.termsInfo {
+            padding: 15px 0 0 40px;
+            color: #666666;
+            font-size: 12px;
+            letter-spacing: -0.05em;
+          }
+
+          &.smsEmail {
+            padding: 25px 0 20px 35px;
+          }
+
+          .sms {
+            margin-right: 40px;
+          }
+        }
+
+        .selectOption {
+          color: #666666;
+        }
+
+        .termsView {
+          position: absolute;
+          right: 10px;
+          color: #5f0080;
+          font-size: 13px;
+          text-decoration: none;
+
+          &::after {
+            content: " 〉";
+          }
+        }
+
+        .smsInfo {
+          padding-left: 70px;
+          color: #5f0080;
+          font-size: 13px;
+          letter-spacing: -0.03em;
+
+          &::before {
+            content: "└ ";
+            color: #666666;
+          }
+        }
+      }
+    }
+
+    .formSubmit {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+
+      .submitBtn {
+        width: 250px;
+        height: 60px;
+        background-color: #5f0080;
+        color: #ffffff;
+        border: none;
+        border-radius: 3px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+}
