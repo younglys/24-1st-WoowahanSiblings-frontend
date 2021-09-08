@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
 
 class Benefit extends Component {
   render() {
@@ -14,9 +15,9 @@ class Benefit extends Component {
             {this.props.benefitList.map(benefit => {
               return (
                 <li>
-                  <a className="thumbGoods">
+                  <Link to="/detail" className="thumbGoods">
                     <img src={benefit.image_list} />
-                  </a>
+                  </Link>
                   <div className="innerInfo">
                     <span className="innerInfo1">{benefit.infomation}</span>
                     <span className="innerInfo2">{benefit.name}</span>

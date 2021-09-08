@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class ProductList extends Component {
   constructor(props) {
@@ -50,7 +50,6 @@ class ProductList extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <>
         <div className="productList">
@@ -69,15 +68,17 @@ class ProductList extends Component {
                 {this.props.productList.map(productListData => {
                   return (
                     <li
-                      onClick={() =>
-                        this.props.history.push(`/detail/${productListData.id}`)
-                      }
+                      key={productListData.id}
+                      onClick={() => {
+                        this.props.history.push(
+                          `/detail/${productListData.id}`
+                        );
+                      }}
                     >
-                      <a href="#">
-                        <img src={productListData.image_list} />
-                      </a>
+                      <img src={productListData.image_list} />
+
                       <span className="productName">
-                        <a href="#">{productListData.name} </a>
+                        <Link to="/detail">{productListData.name} </Link>
                       </span>
                       <span className="price">{productListData.price}원</span>
                     </li>
