@@ -14,27 +14,12 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.4.207:8000/products/1`)
+    fetch(`http://10.58.0.49:8000/products/50`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          name: "",
-          price: 0,
-          discount: 0,
-          sales_unit: "",
-          shipping_type: "",
-          origin: "",
-          package_type: "",
-          information: "",
-          created_at: "",
-          updated_at: "",
-          sub_category: "",
-          main_category: "",
-          menu: "",
-          image_list: "",
-          allergy_list: "",
+          data: res,
         });
-        console.log(res);
       });
   }
   render() {
@@ -59,21 +44,21 @@ class Detail extends Component {
     return (
       <div className="detail">
         <CartPut
-          name={name}
-          price={price}
-          discount={discount}
-          sales_unit={sales_unit}
-          shipping_type={shipping_type}
-          origin={origin}
-          package_type={package_type}
-          information={information}
-          created_at={created_at}
-          updated_at={updated_at}
-          sub_category={sub_category}
-          main_category={main_category}
-          menu={menu}
-          image_list={image_list}
-          allergy_list={allergy_list}
+          name={name && name}
+          price={price && price}
+          discount={discount && discount}
+          sales_unit={sales_unit && sales_unit}
+          shipping_type={shipping_type && shipping_type}
+          origin={origin && origin}
+          package_type={package_type && package_type}
+          information={information && information}
+          created_at={created_at && created_at}
+          updated_at={updated_at && updated_at}
+          sub_category={sub_category && sub_category}
+          main_category={main_category && main_category}
+          menu={menu && menu}
+          image_list={image_list && image_list}
+          allergy_list={allergy_list && allergy_list}
         />
         <Related />
         <GoodsView />

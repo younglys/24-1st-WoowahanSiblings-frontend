@@ -2,24 +2,9 @@ import React, { Component } from "react";
 import "./CartPut.scss";
 
 class CartPut extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      name: "",
-      price: 0,
-      discount: 0,
-      sales_unit: "",
-      shipping_type: "",
-      origin: "",
-      package_type: "",
-      information: "",
-      created_at: "",
-      updated_at: "",
-      sub_category: "",
-      main_category: "",
-      menu: "",
-      image_list: "",
-      allergy_list: "",
       num: 1,
     };
   }
@@ -55,11 +40,7 @@ class CartPut extends Component {
 
     return (
       <div className="cartPut">
-        <img
-          className="cartPutImg"
-          src="https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
-          alt="상품 이미지"
-        />
+        <img className="cartPutImg" src={image_list} alt="상품 이미지" />
         <div className="innerView">
           <p className="goodsName">
             <strong className="name">{name}</strong>
@@ -94,10 +75,6 @@ class CartPut extends Component {
               <dd className="desc">{sales_unit}</dd>
             </dl>
             <dl className="infoList">
-              <dt className="tit">중량/용량</dt>
-              <dd className="desc">{menu}</dd>
-            </dl>
-            <dl className="infoList">
               <dt className="tit">배송구분</dt>
               <dd className="desc">{shipping_type}</dd>
             </dl>
@@ -125,10 +102,7 @@ class CartPut extends Component {
               <dt className="tit">알러지</dt>
               <dd className="desc">{allergy_list}</dd>
             </dl>
-            <dl className="infoList">
-              <dt className="tit">당도</dt>
-              <dd className="desc">10 brix 이상</dd>
-            </dl>
+
             <dl className="infoList">
               <dt className="tit">안내사항</dt>
               <dd className="desc">
