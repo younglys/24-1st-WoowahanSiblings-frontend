@@ -6,14 +6,20 @@ class CartPut extends Component {
     super();
     this.state = {
       name: "",
-      sub_name: "",
       price: 0,
       discount: 0,
       sales_unit: "",
-      weight: "",
       shipping_type: "",
       origin: "",
       package_type: "",
+      information: "",
+      created_at: "",
+      updated_at: "",
+      sub_category: "",
+      main_category: "",
+      menu: "",
+      image_list: "",
+      allergy_list: "",
       num: 1,
     };
   }
@@ -31,14 +37,20 @@ class CartPut extends Component {
   render() {
     const {
       name,
-      sub_name,
       price,
       discount,
       sales_unit,
-      weight,
       shipping_type,
       origin,
       package_type,
+      information,
+      created_at,
+      updated_at,
+      sub_category,
+      main_category,
+      menu,
+      image_list,
+      allergy_list,
     } = this.props;
 
     return (
@@ -51,7 +63,7 @@ class CartPut extends Component {
         <div className="innerView">
           <p className="goodsName">
             <strong className="name">{name}</strong>
-            <span className="shortDesc">{sub_name}</span>
+            <span className="shortDesc">{information}</span>
           </p>
           <div className="priceInfo">
             <p className="dcInfo">회원할인가</p>
@@ -83,7 +95,7 @@ class CartPut extends Component {
             </dl>
             <dl className="infoList">
               <dt className="tit">중량/용량</dt>
-              <dd className="desc">{weight}</dd>
+              <dd className="desc">{menu}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">배송구분</dt>
@@ -108,6 +120,10 @@ class CartPut extends Component {
                 신선식품으로 유통기한은 없으나 가급적 빠른 시일내 드시길
                 바랍니다.
               </dd>
+            </dl>
+            <dl className="infoList">
+              <dt className="tit">알러지</dt>
+              <dd className="desc">{allergy_list}</dd>
             </dl>
             <dl className="infoList">
               <dt className="tit">당도</dt>
