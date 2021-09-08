@@ -66,9 +66,9 @@ class Instagram extends Component {
                   transform: `translateX(${this.state.slideCount}px)`,
                 }}
               >
-                {this.props.product.map(productListData => {
+                {this.props.product.map((productListData, idx) => {
                   return (
-                    <li>
+                    <li key={idx}>
                       <div>
                         <img src={productListData.imges} />
                       </div>

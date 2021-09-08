@@ -22,6 +22,7 @@ class Main extends Component {
       yearProductList: [],
       kulryList: [],
       instagram: [],
+      isLoading: true,
     };
   }
 
@@ -50,79 +51,111 @@ class Main extends Component {
       .then(productData => {
         this.setState({
           instagram: productData,
+          isLoading: false,
         });
       });
   }
 
+  componentDidUpdate() {
+    console.log("서버");
+  }
+
   render() {
-    console.log(this.state.productList);
     return (
       <div className="main">
-        <AdList />
-        <ProductList
-          productList={this.state.productList}
-          datalength={10}
-          title={"이 상품 어때요?"}
-        />
-        <Benefit
-          benefitList={this.state.benefitList}
-          datalength={3}
-          title={"특가/혜택"}
-        />
-        <ProductList
-          productList={this.state.noticList}
-          datalength={10}
-          title={"놓치면 후회할 가격"}
-        />
-        <CenterAdd />
-        <ButtonProductList
-          productList={this.state.buttonList}
-          datalength={10}
-          title={"MD의 추천"}
-        />
-        <CenterAdd />
-        <ProductList
-          productList={this.state.hotProductList}
-          datalength={10}
-          title={"지금 가장 핫한 상품"}
-        />
-        <div style={{ backgroundColor: "#f7f7f7" }}>
-          <ProductList
-            productList={this.state.giftProductList}
-            datalength={10}
-            title={"추석 선물 추천, 뷰티 최대 40% 할인"}
-          />
-        </div>
-        <ProductList
-          productList={this.state.giftProductList}
-          datalength={10}
-          title={"마감세일"}
-        />
-        <div style={{ backgroundColor: "#f7f7f7" }}>
-          <ProductList
-            productList={this.state.campingProductList}
-            datalength={10}
-            title={"365일 최저가 도전"}
-          />
-        </div>
-        <ProductList
-          productList={this.state.yearProductList}
-          datalength={10}
-          title={"설레는 캠핑"}
-        />
+        {this.state.isLoading ? (
+          <div className="loader">
+            <svg
+              className="spinner"
+              width="65px"
+              height="65px"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                className="path"
+                fill="none"
+                strokeWidth="6"
+                strokeLinecap="round"
+                cx="33"
+                cy="33"
+                r="30"
+              ></circle>
+            </svg>
+          </div>
+        ) : (
+          <>
+            <AdList />
+            <ProductList
+              productList={this.state.productList}
+              datalength={10}
+              title={"이 상품 어때요?"}
+            />
+            <Benefit
+              benefitList={this.state.benefitList}
+              datalength={3}
+              title={"특가/혜택"}
+            />
+            <ProductList
+              productList={this.state.noticList}
+              datalength={10}
+              title={"놓치면 후회할 가격"}
+            />
+            <CenterAdd />
+            <ButtonProductList
+              productList={this.state.buttonList}
+              datalength={10}
+              title={"MD의 추천"}
+            />
+            <CenterAdd />
+            <ProductList
+              productList={this.state.hotProductList}
+              datalength={10}
+              title={"지금 가장 핫한 상품"}
+            />
+            <div style={{ backgroundColor: "#f7f7f7" }}>
+              <ProductList
+                productList={this.state.giftProductList}
+                datalength={10}
+                title={"추석 선물 추천, 뷰티 최대 40% 할인"}
+              />
+            </div>
+            <ProductList
+              productList={this.state.giftProductList}
+              datalength={10}
+              title={"마감세일"}
+            />
+            <div style={{ backgroundColor: "#f7f7f7" }}>
+              <ProductList
+                productList={this.state.campingProductList}
+                datalength={10}
+                title={"365일 최저가 도전"}
+              />
+            </div>
+            <ProductList
+              productList={this.state.yearProductList}
+              datalength={10}
+              title={"설레는 캠핑"}
+            />
 
-        <KulryList
-          productList={this.state.kulryList}
-          datalength={10}
-          title={"컬리의 레시피"}
-        />
+            <KulryList
+              productList={this.state.kulryList}
+              datalength={10}
+              title={"컬리의 레시피"}
+            />
 
-        {this.state.instagram.map(productWhy => {
-          return (
-            <Instagram title={productWhy.title} product={productWhy.product} />
-          );
-        })}
-        <CenterAdd />
+            {this.state.instagram.map((productWhy, index) => {
+              return (
+                <Instagram
+                  title={productWhy.title}
+                  product={productWhy.product}
+                  key={index}
+                />
+              );
+            })}
+            <CenterAdd />
+          </>
+        )}
       </div>
     );
   }

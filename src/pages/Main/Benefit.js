@@ -14,7 +14,7 @@ class Benefit extends Component {
           <ul className="benefitListImg">
             {this.props.benefitList.map(benefit => {
               return (
-                <li>
+                <li key={benefit.id}>
                   <Link to="/detail" className="thumbGoods">
                     <img src={benefit.image_list} />
                   </Link>

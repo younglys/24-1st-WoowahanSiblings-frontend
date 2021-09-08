@@ -57,9 +57,9 @@ class ButtonProductList extends Component {
         </div>
         <div className="buttonCategory">
           <ul className="buttonListCategory">
-            {BUTTONLIST.map(buttonlist => {
+            {BUTTONLIST.map((buttonlist, idx) => {
               return (
-                <li>
+                <li key={idx}>
                   <div>{buttonlist}</div>
                 </li>
               );
@@ -75,9 +75,7 @@ class ButtonProductList extends Component {
             {this.props.productList.map(productListData => {
               return (
                 <li>
-                  <div>
-                    <img src={productListData.image_list} />
-                  </div>
+                  <img src={productListData.image_list} />
                   <span className="productName">{productListData.name}</span>
                   <span className="price">{productListData.price}원</span>
                 </li>

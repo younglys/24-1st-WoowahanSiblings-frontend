@@ -67,7 +67,7 @@ class KulryList extends Component {
               >
                 {this.props.productList.map(productListData => {
                   return (
-                    <li>
+                    <li key={productListData.id}>
                       <div>
                         <img src={productListData.image_list} />
                       </div>
