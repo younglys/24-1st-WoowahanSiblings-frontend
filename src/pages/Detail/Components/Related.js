@@ -44,8 +44,9 @@ class GoodsRelatedList extends Component {
 
   render() {
     const { relatedItem } = this.state;
-    const relatedInfo = relatedItem.map(item => (
+    const relatedInfo = relatedItem.map((item, idx) => (
       <RelatedItem
+        key={idx}
         imgSrc={item.imgSrc}
         goodsName={item.goodsName}
         goodsPrice={item.goodsPrice}

@@ -1,0 +1,42 @@
+.goodsRelated {
+  margin-top: 35px;
+
+  .wrapper {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+
+    .relatedLine {
+      width: 20px;
+      height: 5px;
+      background-color: black;
+    }
+
+    h3 {
+      padding: 5px 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+  .sliderWrapper {
+    display: flex;
+    justify-content: center;
+
+    .relatedList {
+      display: flex;
+      overflow: hidden;
+      width: 970px;
+      transition: all 0.3s;
+
+      .relatedItemList {
+        display: flex;
+        padding: 15px 0;
+      }
+    }
+    .relatedArrow {
+      background-color: white;
+      border: 1px solid transparent;
+      font-size: 20px;
+    }
+  }
+}

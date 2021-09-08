@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import { Route, Link } from "react-router-dom";
 import TopLayout from "./TopLayout";
 import Navdropmenu from "./Navdropmenu";
 import NavMenuCategory from "./NavMenuCategory";
 import NavInput from "./NavInput";
 import "./Nav.scss";
 
-export default class Nav extends Component {
+class Nav extends Component {
   render() {
     return (
       <nav className="navLayout">
         <TopLayout />
         <div className="secondLayout">
-          <img alt="logo" src="/images/logo2.png" />
+          <Link to="/">
+            <img alt="logo" src="/images/logo2.png" />
+          </Link>
         </div>
         <div className="thirdLayout">
           <ul className="allCategorie">
@@ -24,3 +27,5 @@ export default class Nav extends Component {
     );
   }
 }
+
+export default Nav;

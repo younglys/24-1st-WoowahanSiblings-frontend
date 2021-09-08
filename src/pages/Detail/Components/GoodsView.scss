@@ -1,0 +1,49 @@
+.goodsViewArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  margin-top: 55px;
+
+  .goodsViewTap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: rgb(250, 250, 250);
+
+    .viewTapMenu {
+      text-align: center;
+      width: 285px;
+      padding: 20px 0;
+      border: 1px solid rgb(222, 211, 211);
+      border-right: none;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    li:last-child {
+      border-right: 1px solid rgb(222, 211, 211);
+    }
+
+    .clicked {
+      background-color: white;
+      color: rgb(86, 0, 125);
+      border-bottom: none;
+    }
+  }
+}
+
+.goodsViewContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .mockDetailDesc {
+    width: 400px;
+    height: 300px;
+    background-color: black;
+  }
+}
