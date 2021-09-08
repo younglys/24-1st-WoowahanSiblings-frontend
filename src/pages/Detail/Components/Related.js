@@ -59,7 +59,7 @@ class GoodsRelatedList extends Component {
           <h3>RELATED PRODUCT</h3>
         </div>
         <div className="sliderWrapper">
-          <button className="relatedArrow" onClick={this.leftArrow}>
+          <button className="relatedArrow" onClick={this.clickLeftArrow}>
             <i className="fas fa-chevron-left" />
           </button>
           <div className="relatedList">
@@ -72,7 +72,7 @@ class GoodsRelatedList extends Component {
               {relatedInfo}
             </div>
           </div>
-          <button className="relatedArrow" onClick={this.rightArrow}>
+          <button className="relatedArrow" onClick={this.clickRightArrow}>
             <i className="fas fa-chevron-right" />
           </button>
         </div>
