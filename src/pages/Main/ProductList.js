@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class ProductList extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class ProductList extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <>
         <div className="productList">
@@ -66,7 +68,11 @@ class ProductList extends Component {
               >
                 {this.props.productList.map(productListData => {
                   return (
-                    <li>
+                    <li
+                      onClick={() =>
+                        this.props.history.push(`/detail/${productListData.id}`)
+                      }
+                    >
                       <a href="#">
                         <img src={productListData.image_list} />
                       </a>
@@ -103,4 +109,4 @@ const IMG_WIDTH = 249;
 const IMG_GAP = 18;
 const IMG_SLIDE = 534;
 
-export default React.memo(ProductList);
+export default withRouter(ProductList);

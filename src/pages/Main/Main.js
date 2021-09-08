@@ -8,7 +8,7 @@ import KulryList from "./KulryList";
 import Instagram from "./Instagram";
 import "./Main.scss";
 
-export default class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +26,7 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.2.99:8000/products/lists", {
+    fetch("http://10.58.0.49:8000/products/lists", {
       method: "GET",
     })
       .then(res => res.json())
@@ -127,3 +127,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default Main;
