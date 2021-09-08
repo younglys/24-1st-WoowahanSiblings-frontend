@@ -1,4 +1,3 @@
-import { check } from "prettier";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.scss";
@@ -12,6 +11,7 @@ class SignUp extends Component {
       email: "",
       phoneNumber: "",
       address: "",
+      gender: "",
       isIdshowing: false,
       isPwshowing: false,
       isPwCheckshowing: false,
@@ -78,17 +78,9 @@ class SignUp extends Component {
       });
     }
 
-    const check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,30}$/; //영문,숫자
-    const check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,30}$/; //영문,특수문자
-    const check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,30}$/; //특수문자, 숫자
-    const check4 = /^(?=.*[A-Z])(?=.*[0-9])(?!.*?\d{4}).{10,30}?$/; //3개 연속 불가
+    const pwCheck = /^(?=.*[^a-zA-Z])(?=.*[@#$%^*+=-])(?=.*[0-9]).{10,16}$/;
 
-    if (
-      check1.test(e.target.value) &&
-      check2.test(e.target.value) &&
-      check3.test(e.target.value) &&
-      check4.test(e.target.value)
-    ) {
+    if (pwCheck.test(e.target.value)) {
       this.setState({
         isPwCheckColor: true,
       });
@@ -97,14 +89,6 @@ class SignUp extends Component {
         isPwCheckColor: false,
       });
     }
-
-    /* const pwRegex =
-      /^(?=.*[A-Z])(?=.*[0-9])(?!.*?\d{4})(?=.*[a-z])(?=.*[!@#$%^*+=-])$/; */
-
-    /*
-    const validEmail = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
-    const validPassword = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
-    */
   };
 
   handlePwCheck = e => {
@@ -122,15 +106,20 @@ class SignUp extends Component {
   checkIdPass = () => {};
 
   handleSignup = () => {
-    const { id, password, name, email, phoneNumber, address, gender, birth } =
-      this.state;
-    fetch("http://10.58.4.207:8000/bbmarket/signup", {
+    const {
+      id,
+      password,
+      name,
+      email,
+      phoneNumber,
+      address,
+      gender,
+      birthYear,
+      birthMonth,
+      birthDate,
+    } = this.state;
+    fetch("http://10.58.0.49:8000/users/signup", {
       method: "POST",
-      // headers: {
-      //   Accept: "application/json",
-      //   "Content-type": "application/json",
-      //   "Authorization: localStorage.getItem('token')"
-      // },
       body: JSON.stringify({
         account_name: id,
         password: password,
@@ -139,17 +128,15 @@ class SignUp extends Component {
         phone_number: phoneNumber,
         address: address,
         gender: gender,
-        date_of_birth: birth,
+        date_of_birth: `${birthYear}-${birthMonth}-${birthDate}`,
       }),
     })
       .then(res => res.json())
       .then(res => {
         console.log("결과: ", res);
-        if (res.token) {
-          console.log(res.MESSAGE);
-          localStorage.setItem("token", res.token);
+        if (res.message === "SUCCESS") {
           alert(
-            `${this.state.account_name}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`
+            `${this.state.id}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`
           );
           this.props.history.push("/");
         } else {
@@ -196,7 +183,6 @@ class SignUp extends Component {
                     </button>
                     {isIdShowing && (
                       <div className="inputConditionWrapper">
-                        {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
                         <p
                           className="inputCondition"
                           style={{
@@ -223,7 +209,6 @@ class SignUp extends Component {
                     />
                     {isPwShowing && (
                       <div className="inputConditionWrapper">
-                        {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
                         <p
                           className="inputCondition"
                           style={{
@@ -238,8 +223,8 @@ class SignUp extends Component {
                             color: isPwCheckColor === false ? "red" : "blue",
                           }}
                         >
-                          영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상
-                          조합
+                          영문 대소문자/숫자/특수문자(공백 제외)만 허용하며, 2개
+                          이상 조합
                         </p>
                         <p
                           className="inputCondition"
@@ -260,7 +245,7 @@ class SignUp extends Component {
                       onClick={this.handleShowPwCheckInputCondition}
                       onChange={this.handlePwCheck}
                       type="password"
-                      name="passwordConfirmation"
+                      name="rePassword"
                       autoComplete="off"
                       placeholder="비밀번호를 한번 더 입력해주세요"
                     />
@@ -319,7 +304,6 @@ class SignUp extends Component {
                       placeholder="예: 서울시 강남구 테헤란로 427, 3층 별밤마켓"
                     />
                     <div>
-                      {/* 기호'•'는 조건 불충족 시 '×', 조건 충족 시 '√' */}
                       <div className="inputConditionWrapper">
                         <p className="inputDescription">
                           배송지에 따라 상품 정보가 달라질 수 있습니다.
@@ -359,7 +343,8 @@ class SignUp extends Component {
                           type="radio"
                           id="noSelect"
                           name="gender"
-                          value="option"
+                          value="noSelect"
+                          defaultChecked
                         />
                         <label htmlFor="noSelect" className="genderOption">
                           선택안함
@@ -373,17 +358,8 @@ class SignUp extends Component {
                   <td>
                     <div className="birth">
                       <input
-                        type="date"
-                        name="birth"
-                        className="birthDateInput"
-                        placeholder="YYYY-MM-DD"
-                        onFocus={(this.type = this.date)}
-                      ></input>
-                    </div>
-                    <div className="birth">
-                      <input
                         type="text"
-                        name="birth"
+                        name="birthYear"
                         className="birthInput"
                         maxLength="4"
                         placeholder="YYYY"
@@ -391,7 +367,7 @@ class SignUp extends Component {
                       <span>/</span>
                       <input
                         type="text"
-                        name="birth"
+                        name="birthMonth"
                         className="birthInput"
                         maxLength="2"
                         placeholder="MM"
@@ -399,7 +375,7 @@ class SignUp extends Component {
                       <span>/</span>
                       <input
                         type="text"
-                        name="birth"
+                        name="birthDate"
                         className="birthInput"
                         maxLength="2"
                         placeholder="DD"
@@ -438,14 +414,12 @@ class SignUp extends Component {
                       </div>
                     </div>
                     <div>
-                      {/* 추천인 아이디 선택 시 */}
                       <input
                         type="text"
                         placeholder="추천인 아이디를 입력해주세요."
                       />
                     </div>
                     <div>
-                      {/* 참여 이벤트명 선택 시 */}
                       <input
                         type="text"
                         placeholder="참여 이벤트명을 입력해주세요."
