@@ -4,6 +4,21 @@ import CartItemList from "./Components/CartItemList";
 import "./Cart.scss";
 
 class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartList: [],
+    };
+  }
+  componentDidMount() {
+    fetch(`http://localhost:3000/data/relatedItem.json`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartList: res,
+        });
+      });
+  }
   render() {
     return (
       <div className="cart">
@@ -12,7 +27,15 @@ class Cart extends Component {
           <div className="cartItemList">
             <CartSelect />
             <div className="innerCart">
-              <CartItemList />
+              {this.state.cartList.map(item => {
+                return (
+                  <CartItemList
+                    imgSrc={item.imgSrc}
+                    goodsName={item.goodsName}
+                    goodsPrice={item.goodsPrice}
+                  />
+                );
+              })}
             </div>
             <CartSelect />
           </div>

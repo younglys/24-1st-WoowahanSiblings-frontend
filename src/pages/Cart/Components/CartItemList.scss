@@ -65,11 +65,28 @@
 
       p {
         font-size: 18px;
-        padding: 0 30px;
+        width: 120px;
+        text-align: center;
       }
 
       .fa-times {
         font-size: 20px;
+      }
+
+      .calculator {
+        border: 1px solid #ddd;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+
+        .amountValue {
+          font-size: 18px;
+        }
+
+        button {
+          background-color: transparent;
+          border: none;
+        }
       }
     }
   }
