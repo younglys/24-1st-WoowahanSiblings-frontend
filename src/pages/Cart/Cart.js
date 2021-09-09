@@ -21,6 +21,7 @@ class Cart extends Component {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           cartList: res.MESSAGE,
         });
