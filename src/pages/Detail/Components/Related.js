@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import RelatedItem from "./RelatedItem";
+import { PRODUCT_API } from "../../../config";
 import "./Related.scss";
 
 class GoodsRelatedList extends Component {
@@ -12,7 +14,7 @@ class GoodsRelatedList extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.124:8000/products/3`)
+    fetch(`${PRODUCT_API}${this.props.match.params.productId}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -33,7 +35,7 @@ class GoodsRelatedList extends Component {
 
   clickRightArrow = () => {
     const { currentOffsetX } = this.state;
-    const itemLength = this.props.selected_products.length;
+    const itemLength = this.props.related.length;
     if (currentOffsetX > (itemLength - 6) * -RELATED_WIDTH) {
       this.setState({
         currentOffsetX: currentOffsetX - RELATED_WIDTH,
@@ -83,4 +85,4 @@ class GoodsRelatedList extends Component {
 
 const RELATED_WIDTH = 192;
 
-export default GoodsRelatedList;
+export default withRouter(GoodsRelatedList);

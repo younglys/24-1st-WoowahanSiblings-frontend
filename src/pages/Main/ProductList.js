@@ -50,6 +50,8 @@ class ProductList extends Component {
   };
 
   render() {
+    const { title, productList } = this.props;
+    const { slideCount } = this.state;
     return (
       <>
         <div className="productList">
@@ -62,10 +64,10 @@ class ProductList extends Component {
             <div className="boxViewport" style={{ width: this.slideWidth }}>
               <ul
                 style={{
-                  transform: `translateX(${this.state.slideCount}px)`,
+                  transform: `translateX(${slideCount}px)`,
                 }}
               >
-                {this.props.productList.map(productListData => {
+                {productList.map(productListData => {
                   return (
                     <li
                       key={productListData.id}
@@ -85,12 +87,12 @@ class ProductList extends Component {
                   );
                 })}
               </ul>
-              {this.state.slideCount !== this.slideEnd && (
+              {slideCount !== this.slideEnd && (
                 <div className="productLeftButton" onClick={this.handleNextBtn}>
                   <img src="/images/leftbuttonx2.webp" />
                 </div>
               )}
-              {!!this.state.slideCount && (
+              {!slideCount && (
                 <div
                   className="productRightButton"
                   onClick={this.handlePrevBtn}

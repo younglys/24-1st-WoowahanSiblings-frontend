@@ -6,8 +6,8 @@ class NavMenuCategory extends Component {
       <>
         {CATEGORY.map((categoryList, index) => {
           return (
-            <li key={index}>
-              <a href="">{categoryList}</a>
+            <li className="catergoryHover" key={index}>
+              {categoryList}
             </li>
           );
         })}

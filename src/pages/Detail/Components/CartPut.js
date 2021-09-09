@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { CART_API } from "../../../config";
 import "./CartPut.scss";
 
 class CartPut extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLogin: false,
       product_id: 1,
       quantity: 1,
     };
@@ -24,26 +27,26 @@ class CartPut extends Component {
   };
 
   handleCart = () => {
-    this.setState({
-      product_id: this.props.data.id,
-    });
-    const { product_id, quantity } = this.state;
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+      alert("로그인을 해주세요 !");
+      this.setState({
+        isLogin: false,
+      });
 
-    fetch("http://10.58.0.43:8000/orders/carts", {
+      return;
+    }
+
+    fetch(CART_API, {
       method: "POST",
       body: JSON.stringify({
-        product_id: product_id,
-        quantity: quantity,
+        product_id: this.props.data.id,
+        quantity: this.state.quantity,
       }),
     })
       .then(response => response.json())
       .then(result => {
-        if (result.Authorization) {
-          localStorage.getItem("token", result.Authorization);
-          this.props.history.push("cart");
-        } else if (result.message === "UNAUTHORIZED") {
-          alert("로그인 먼저 해주세요.");
-        }
+        this.props.history.push("/cart");
       });
   };
 
@@ -211,4 +214,4 @@ class CartPut extends Component {
   }
 }
 
-export default CartPut;
+export default withRouter(CartPut);
