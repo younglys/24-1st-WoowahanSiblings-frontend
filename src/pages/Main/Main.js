@@ -7,7 +7,7 @@ import CenterAdd from "./CenterAdd";
 import ButtonProductList from "./ButtonProductList";
 import KulryList from "./KulryList";
 import Instagram from "./Instagram";
-import Nav from "../../components/Nav/Nav";
+import { PRODUCT_LIST_API } from "../../config";
 import "./Main.scss";
 
 class Main extends Component {
@@ -29,7 +29,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.2.124:8000/products/lists", {
+    fetch(PRODUCT_LIST_API, {
       method: "GET",
     })
       .then(res => res.json())
@@ -46,7 +46,7 @@ class Main extends Component {
           kulryList: productData.products.slice(11, 21),
         });
       });
-    fetch("http://localhost:3000//data/instagram.json", {
+    fetch("/data/instagram.json", {
       method: "GET",
     })
       .then(res => res.json())
@@ -74,7 +74,6 @@ class Main extends Component {
     } = this.state;
     return (
       <div className="main">
-        <Nav />
         {isLoading ? (
           <Loading />
         ) : (

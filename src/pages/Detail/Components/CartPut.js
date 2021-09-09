@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { CART_API } from "../../../config";
 import "./CartPut.scss";
 
 class CartPut extends Component {
@@ -29,6 +30,7 @@ class CartPut extends Component {
       });
     } else {
       this.props.history.push("/login");
+      alert("로그인을 해주세요 !");
       this.setState({
         isLogin: false,
       });

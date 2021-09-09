@@ -3,6 +3,7 @@ import CartPut from "./Components/CartPut";
 import Related from "./Components/Related";
 import GoodsView from "./Components/GoodsView";
 import HappyCenter from "./Components/HappyCenter";
+import { PRODUCT_API } from "../../config";
 import "./Detail.scss";
 
 class Detail extends Component {
@@ -14,7 +15,7 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.124:8000/products/1`)
+    fetch(`${PRODUCT_API}${this.props.match.params.productId}`)
       .then(res => res.json())
       .then(res => {
         this.setState({

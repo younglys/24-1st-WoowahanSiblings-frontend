@@ -12,7 +12,7 @@ class GoodsRelatedList extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/data/relatedItem.json`)
+    fetch(`/data/relatedItem.json`)
       .then(res => res.json())
       .then(res => {
         this.setState({

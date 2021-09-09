@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { KURLY_API } from "../../config";
 
 class Navdropmenu extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Navdropmenu extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.kurly.com/v2/categories?ver=1")
+    fetch(KURLY_API)
       .then(res => res.json())
       .then(data => {
         this.setState({
