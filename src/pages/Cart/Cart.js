@@ -11,17 +11,27 @@ class Cart extends Component {
       cartList: [],
     };
   }
+
   componentDidMount() {
-    fetch(CART_API)
+    fetch(CART_API, {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           cartList: res,
         });
       });
   }
+
   render() {
     const listLength = this.state.cartList.length;
+    console.log(this.state.cartList);
+
     return (
       <div className="cart">
         <div className="titPage">장바구니</div>

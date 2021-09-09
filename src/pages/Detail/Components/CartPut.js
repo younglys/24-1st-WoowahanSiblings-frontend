@@ -39,6 +39,9 @@ class CartPut extends Component {
 
     fetch(CART_API, {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
       body: JSON.stringify({
         product_id: this.props.data.id,
         quantity: this.state.quantity,

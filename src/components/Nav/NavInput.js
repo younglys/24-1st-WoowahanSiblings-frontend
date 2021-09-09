@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class NavInput extends Component {
+  handleCartList = () => {
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/cart");
+    } else {
+      this.props.history.push("/login");
+    }
+  };
+
   render() {
     return (
       <div className="thirdLayoutIcon">
@@ -12,11 +21,11 @@ class NavInput extends Component {
           <i className="fas fa-map-marker-alt" />
         </a>
         <a>
-          <i className="fas fa-shopping-cart" />
+          <i className="fas fa-shopping-cart" onClick={this.handleCartList} />
         </a>
       </div>
     );
   }
 }
 
-export default NavInput;
+export default withRouter(NavInput);
