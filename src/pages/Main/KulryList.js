@@ -47,11 +47,13 @@ class KulryList extends Component {
   };
 
   render() {
+    const { title, productList } = this.props;
+    const { slideCount } = this.state;
     return (
       <>
         <div className="kulryList">
           <div className="kulryStatus">
-            <h3>{this.props.title}</h3>
+            <h3>{title}</h3>
           </div>
         </div>
         <div className="kulrylistGoods">
@@ -62,10 +64,10 @@ class KulryList extends Component {
             >
               <ul
                 style={{
-                  transform: `translateX(${this.state.slideCount}px)`,
+                  transform: `translateX(${slideCount}px)`,
                 }}
               >
-                {this.props.productList.map(productListData => {
+                {productList.map(productListData => {
                   return (
                     <li key={productListData.id}>
                       <div>
@@ -78,7 +80,7 @@ class KulryList extends Component {
                   );
                 })}
               </ul>
-              {this.state.slideCount !== this.slideEnd && (
+              {slideCount !== this.slideEnd && (
                 <div
                   className="kulryproductLeftButton"
                   onClick={this.handleNextBtn}
@@ -86,7 +88,7 @@ class KulryList extends Component {
                   <img src="/images/leftbuttonx2.webp" />
                 </div>
               )}
-              {!!this.state.slideCount && (
+              {!!slideCount && (
                 <div
                   className="kulryproductRightButton"
                   onClick={this.handlePrevBtn}

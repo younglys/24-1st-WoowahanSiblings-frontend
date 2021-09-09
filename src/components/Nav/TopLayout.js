@@ -1,8 +1,22 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class TopLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginText: "로그아웃",
+    };
+  }
+
+  handleLogin = () => {
+    localStorage.removeItem("token");
+    this.setState({ loginText: "로그인" });
+    this.props.history.push("/");
+  };
+
   render() {
+    const { loginText } = this.state;
     return (
       <div className="topLayout">
         <div className="kurlyMarket">
@@ -12,15 +26,21 @@ class TopLayout extends Component {
         </div>
         <ul className="signUpList">
           <li className="signUpListText">
-            <a href="#" className="signUpColor">
+            <Link to="/signup" className="signUpColor">
               회원가입
-            </a>
+            </Link>
           </li>
           <li className="signUpListLine">
             <div />
           </li>
           <li className="signUpListText">
-            <Link to="/login">로그인</Link>
+            {localStorage.getItem("token") ? (
+              <span onClick={this.handleLogin}>{loginText}</span>
+            ) : (
+              <span onClick={() => this.props.history.push("/login")}>
+                로그인
+              </span>
+            )}
           </li>
           <li className="signUpListLine">
             <div />
@@ -34,4 +54,4 @@ class TopLayout extends Component {
   }
 }
 
-export default TopLayout;
+export default withRouter(TopLayout);

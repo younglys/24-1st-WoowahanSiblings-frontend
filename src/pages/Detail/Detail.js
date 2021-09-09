@@ -3,6 +3,7 @@ import CartPut from "./Components/CartPut";
 import Related from "./Components/Related";
 import GoodsView from "./Components/GoodsView";
 import HappyCenter from "./Components/HappyCenter";
+import { PRODUCT_API } from "../../config";
 import "./Detail.scss";
 
 class Detail extends Component {
@@ -14,7 +15,7 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.0.43:8000/products/1`)
+    fetch(`${PRODUCT_API}${this.props.match.params.productId}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -22,45 +23,14 @@ class Detail extends Component {
         });
       });
   }
+
   render() {
-    const {
-      name,
-      price,
-      discount,
-      sales_unit,
-      shipping_type,
-      origin,
-      package_type,
-      infomation,
-      created_at,
-      updated_at,
-      sub_category,
-      main_category,
-      menu,
-      image_list,
-      allergy_list,
-    } = this.state.data;
+    const data = this.state.data;
 
     return (
       <div className="detail">
-        <CartPut
-          name={name && name}
-          price={price && price}
-          discount={discount && discount}
-          sales_unit={sales_unit && sales_unit}
-          shipping_type={shipping_type && shipping_type}
-          origin={origin && origin}
-          package_type={package_type && package_type}
-          infomation={infomation && infomation}
-          created_at={created_at && created_at}
-          updated_at={updated_at && updated_at}
-          sub_category={sub_category && sub_category}
-          main_category={main_category && main_category}
-          menu={menu && menu}
-          image_list={image_list && image_list}
-          allergy_list={allergy_list && allergy_list}
-        />
-        <Related />
+        <CartPut data={data} />
+        <Related related={data.selected_products} />
         <GoodsView />
         <HappyCenter />
       </div>

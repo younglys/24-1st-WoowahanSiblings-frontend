@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CartSelect from "./Components/CartSelect";
 import CartItemList from "./Components/CartItemList";
+import { CART_API } from "../../config";
 import "./Cart.scss";
 
 class Cart extends Component {
@@ -11,7 +12,7 @@ class Cart extends Component {
     };
   }
   componentDidMount() {
-    fetch(`http://localhost:3000/data/relatedItem.json`)
+    fetch(CART_API)
       .then(res => res.json())
       .then(res => {
         this.setState({

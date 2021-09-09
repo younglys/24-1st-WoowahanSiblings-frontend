@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { KURLY_API } from "../../config";
 
 class Navdropmenu extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Navdropmenu extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.kurly.com/v2/categories?ver=1")
+    fetch(KURLY_API)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -38,24 +39,29 @@ class Navdropmenu extends Component {
   };
 
   render() {
-    const { itemList, currentno, isDropDown, isDropDownNext } = this.state;
+    const { currentno, isDropDown, isDropDownNext } = this.state;
     return (
       <li onMouseLeave={this.handleDropDown}>
-        <a href="#">
+        <div className="allCategoryHover">
           <i className="fas fa-bars" />
           <span>전체 카테고리</span>
-        </a>
+        </div>
+
         <div
           className="dropDownMenu"
           style={{
             display: isDropDown ? "flex" : "none",
-            width: isDropDownNext ? "320px" : "200px",
+            width: isDropDownNext ? "330px" : "200px",
           }}
         >
           <div
             className="dropDownMenuList"
             onMouseLeave={() =>
-              this.setState({ currentno: 0, isDropDownNext: false })
+              this.setState({
+                currentno: 0,
+                isDropDownNext: false,
+                isDropDown: true,
+              })
             }
           >
             {this.state.itemList.map(item => {
@@ -80,6 +86,12 @@ class Navdropmenu extends Component {
             style={{
               display: isDropDownNext ? "block" : "none",
             }}
+            onMouseEnter={() =>
+              this.setState({
+                currentno: this.state.currentno,
+                isDropDownNext: true,
+              })
+            }
           >
             {this.findSubCategories(currentno).map(subList => {
               return (
