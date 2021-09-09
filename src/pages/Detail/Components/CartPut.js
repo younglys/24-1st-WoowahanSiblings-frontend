@@ -37,7 +37,7 @@ class CartPut extends Component {
       return;
     }
 
-    fetch("http://10.58.0.43:8000/orders/carts", {
+    fetch(CART_API, {
       method: "POST",
       body: JSON.stringify({
         product_id: this.props.data.id,

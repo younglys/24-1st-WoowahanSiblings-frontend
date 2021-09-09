@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import RelatedItem from "./RelatedItem";
 import { PRODUCT_API } from "../../../config";
 import "./Related.scss";
@@ -84,4 +85,4 @@ class GoodsRelatedList extends Component {
 
 const RELATED_WIDTH = 192;
 
-export default GoodsRelatedList;
+export default withRouter(GoodsRelatedList);
