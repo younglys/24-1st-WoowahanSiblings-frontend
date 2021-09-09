@@ -43,10 +43,12 @@
             font-size: 13px;
             text-align: left;
           }
+
           .requiredCategory::after {
             content: "*";
             color: #ff0000;
           }
+
           td {
             display: flex;
             width: 500px;
@@ -138,6 +140,7 @@
             }
           }
 
+          .conditionContainer,
           .address,
           .inputOption {
             flex-direction: column;
