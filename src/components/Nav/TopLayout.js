@@ -17,6 +17,7 @@ class TopLayout extends Component {
 
   render() {
     const { loginText } = this.state;
+
     return (
       <div className="topLayout">
         <div className="kurlyMarket">
