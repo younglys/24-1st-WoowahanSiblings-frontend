@@ -11,6 +11,16 @@ class GoodsRelatedList extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch(`http://10.58.2.124:8000/products/3`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          data: res,
+        });
+      });
+  }
+
   clickLeftArrow = () => {
     const { currentOffsetX } = this.state;
 
@@ -32,7 +42,7 @@ class GoodsRelatedList extends Component {
   };
 
   render() {
-    const relatedItem = this.props.selected_products;
+    const relatedItem = this.props.related;
 
     return (
       <div className="goodsRelated">

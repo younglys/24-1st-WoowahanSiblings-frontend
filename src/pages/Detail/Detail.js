@@ -23,6 +23,7 @@ class Detail extends Component {
         });
       });
   }
+
   render() {
     const data = this.state.data;
 
@@ -30,7 +31,7 @@ class Detail extends Component {
       <div className="detail">
         <Nav />
         <CartPut data={data} />
-        <Related />
+        <Related related={data.selected_products} />
         <GoodsView />
         <HappyCenter />
       </div>
