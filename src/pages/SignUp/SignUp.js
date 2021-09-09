@@ -13,7 +13,6 @@ class SignUp extends Component {
       address: "",
       gender: "",
       usableId: false,
-      usableEmail: false,
       isIdshowing: false,
       isPwshowing: false,
       isPwCheckshowing: false,
@@ -119,17 +118,11 @@ class SignUp extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("결과: ", res);
         if (res.message === "POSSIBLE") {
-          // res.status === 200
           alert("현재 사용 가능한 아이디입니다.");
           this.setState({ usableId: true });
-          console.log("usableId: ", this.state.usableId);
-          // res.message: POSSIBLE
         } else if (res.message === "EXIST_USER") {
-          // res.status === 401
           alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
-          console.log("usableId: ", this.state.usableId);
         }
       });
   };
@@ -162,8 +155,6 @@ class SignUp extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("결과: ", res);
-
         const messages = {
           SUCCESS: `${this.state.id}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`,
           INVALID_ACCOUNT:
@@ -192,7 +183,6 @@ class SignUp extends Component {
       isPwCheckColor,
       isPwReCheckColor,
     } = this.state;
-    console.log(this.state);
     let btnStatus = this.state.checkBtn ? "check" : "uncheck";
     return (
       <div className="signUp">
