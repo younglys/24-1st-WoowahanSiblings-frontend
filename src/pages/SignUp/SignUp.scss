@@ -48,7 +48,8 @@
             color: #ff0000;
           }
           td {
-            width: 75%;
+            display: flex;
+            width: 500px;
             padding: 10px 0;
 
             input[type="text"],
@@ -137,6 +138,11 @@
             }
           }
 
+          .address,
+          .inputOption {
+            flex-direction: column;
+          }
+
           .options {
             display: flex;
             width: 400px;
@@ -176,6 +182,10 @@
           .requiredCategory::after {
             content: "*";
             color: #ff0000;
+          }
+
+          .termsConditions {
+            flex-direction: column;
           }
 
           .uncheck {
