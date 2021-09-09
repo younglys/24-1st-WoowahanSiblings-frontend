@@ -92,7 +92,7 @@ class ProductList extends Component {
                   <img src="/images/leftbuttonx2.webp" />
                 </div>
               )}
-              {!slideCount && (
+              {!!slideCount && (
                 <div
                   className="productRightButton"
                   onClick={this.handlePrevBtn}
