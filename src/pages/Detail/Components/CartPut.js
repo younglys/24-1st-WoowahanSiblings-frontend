@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { CART_API } from "../../../config";
 import "./CartPut.scss";
-
 class CartPut extends Component {
   constructor(props) {
     super(props);
@@ -12,12 +11,10 @@ class CartPut extends Component {
       quantity: 1,
     };
   }
-
   clickDown = () => {
     this.state.quantity > 1 &&
       this.setState({ quantity: this.state.quantity - 1 });
   };
-
   clickUp = () => {
     this.setState(() => {
       return {
@@ -33,12 +30,13 @@ class CartPut extends Component {
       this.setState({
         isLogin: false,
       });
-
       return;
     }
-
     fetch(CART_API, {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
       body: JSON.stringify({
         product_id: this.props.data.id,
         quantity: this.state.quantity,
@@ -69,7 +67,6 @@ class CartPut extends Component {
       image_list,
       allergy_list,
     } = this.props.data;
-
     return (
       <div className="cartPut">
         <img className="cartPutImg" src={image_list} alt="상품 이미지" />
@@ -100,7 +97,6 @@ class CartPut extends Component {
               </a>
             </div>
           </div>
-
           <div className="goodsInfo">
             <dl className="infoList">
               <dt className="tit">판매단위</dt>
@@ -130,12 +126,10 @@ class CartPut extends Component {
                 바랍니다.
               </dd>
             </dl>
-
             <dl className="infoList">
               <dt className="tit">알러지</dt>
               <dd className="desc">{allergy_list}</dd>
             </dl>
-
             <dl className="infoList">
               <dt className="tit">안내사항</dt>
               <dd className="desc">
@@ -179,7 +173,6 @@ class CartPut extends Component {
               </div>
             </dl>
           </div>
-
           <div className="total">
             <div className="totalPrice">
               <span className="text">총 상품 금액 :</span>
@@ -193,7 +186,6 @@ class CartPut extends Component {
                 </span>
                 <span className="won">원</span>
               </p>
-
               <div className="totalDesc">
                 <span className="saveBtn">적립</span>
                 <span>로그인 후, 적립혜택 제공</span>
@@ -213,5 +205,4 @@ class CartPut extends Component {
     );
   }
 }
-
 export default withRouter(CartPut);

@@ -5,7 +5,7 @@ class CartItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num: 1,
+      num: this.props.goodsQuantity,
     };
   }
 
