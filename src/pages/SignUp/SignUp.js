@@ -13,7 +13,6 @@ class SignUp extends Component {
       address: "",
       gender: "",
       usableId: false,
-      usableEmail: false,
       isIdshowing: false,
       isPwshowing: false,
       isPwCheckshowing: false,
@@ -108,40 +107,24 @@ class SignUp extends Component {
     }
   };
 
-  checkId = e => {
+  checkDuplicationId = e => {
     e.preventDefault();
-    fetch("http://10.58.6.197:8000/users/check_id", {
+    fetch("http://10.58.2.124:8000/users/signup/duplication", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: this.state.id }),
-    }).then(res => {
-      if (res.status === 200) {
-        alert("현재 사용 가능한 아이디 입니다.");
-        this.setState({ usableId: true });
-      } else if (res.status === 401) {
-        alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
-      }
-    });
-  };
-
-  checkEmail = e => {
-    e.preventDefault();
-    fetch("http://10.58.6.197:8000/users/check_email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: this.state.email }),
-    }).then(res => {
-      if (res.status === 200) {
-        alert("현재 사용 가능한 이메일 입니다.");
-        this.setState({ usableEmail: true });
-      } else if (res.status === 401) {
-        alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력해주세요.");
-      }
-    });
+      body: JSON.stringify({ account_name: this.state.id }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.message === "POSSIBLE") {
+          alert("현재 사용 가능한 아이디입니다.");
+          this.setState({ usableId: true });
+        } else if (res.message === "EXIST_USER") {
+          alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+        }
+      });
   };
 
   handleSignup = () => {
@@ -157,7 +140,7 @@ class SignUp extends Component {
       birthMonth,
       birthDate,
     } = this.state;
-    fetch("http://10.58.0.49:8000/users/signup", {
+    fetch("http://10.58.2.124:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         account_name: id,
@@ -172,8 +155,6 @@ class SignUp extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("결과: ", res);
-
         const messages = {
           SUCCESS: `${this.state.id}님 반갑습니다. 별밤마켓에 오신 것을 환영합니다!`,
           INVALID_ACCOUNT:
@@ -202,7 +183,6 @@ class SignUp extends Component {
       isPwCheckColor,
       isPwReCheckColor,
     } = this.state;
-    console.log(this.state);
     let btnStatus = this.state.checkBtn ? "check" : "uncheck";
     return (
       <div className="signUp">
@@ -225,7 +205,7 @@ class SignUp extends Component {
                       autoComplete="off"
                       placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                     />
-                    <button type="button" onClick={this.checkId}>
+                    <button type="button" onClick={this.checkDuplicationId}>
                       중복확인
                     </button>
                     {isIdShowing && (
@@ -238,7 +218,15 @@ class SignUp extends Component {
                         >
                           6자 이상의 영문 혹은 영문과 숫자를 조합(영문부터 작성)
                         </p>
-                        <p className="inputCondition">아이디 중복확인</p>
+                        <p
+                          className="inputCondition"
+                          style={{
+                            color:
+                              this.state.usableId === false ? "red" : "green",
+                          }}
+                        >
+                          아이디 중복확인
+                        </p>
                       </div>
                     )}
                   </td>
@@ -328,9 +316,7 @@ class SignUp extends Component {
                       name="email"
                       placeholder="예: byeolbammarket@bb.com"
                     />
-                    <button type="button" onClick={this.checkEmail}>
-                      중복확인
-                    </button>
+                    <button type="button">중복확인</button>
                   </td>
                 </tr>
                 <tr>
