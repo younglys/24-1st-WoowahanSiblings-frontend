@@ -11,16 +11,6 @@ class GoodsRelatedList extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch(`http://localhost:3000/data/relatedItem.json`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          relatedItem: res,
-        });
-      });
-  }
-
   clickLeftArrow = () => {
     const { currentOffsetX } = this.state;
 
@@ -32,10 +22,9 @@ class GoodsRelatedList extends Component {
   };
 
   clickRightArrow = () => {
-    const { currentOffsetX, relatedItem } = this.state;
-
-    if (currentOffsetX > (relatedItem.length - 6) * -RELATED_WIDTH) {
-      console.log(RELATED_WIDTH);
+    const { currentOffsetX } = this.state;
+    const itemLength = this.props.selected_products.length;
+    if (currentOffsetX > (itemLength - 6) * -RELATED_WIDTH) {
       this.setState({
         currentOffsetX: currentOffsetX - RELATED_WIDTH,
       });
@@ -43,15 +32,7 @@ class GoodsRelatedList extends Component {
   };
 
   render() {
-    const { relatedItem } = this.state;
-    const relatedInfo = relatedItem.map((item, idx) => (
-      <RelatedItem
-        key={idx}
-        imgSrc={item.imgSrc}
-        goodsName={item.goodsName}
-        goodsPrice={item.goodsPrice}
-      />
-    ));
+    const relatedItem = this.props.selected_products;
 
     return (
       <div className="goodsRelated">
@@ -70,7 +51,15 @@ class GoodsRelatedList extends Component {
                 transform: `translateX(${this.state.currentOffsetX}px)`,
               }}
             >
-              {relatedInfo}
+              {relatedItem &&
+                relatedItem.map((item, idx) => (
+                  <RelatedItem
+                    key={idx}
+                    imgSrc={item.image_url}
+                    goodsName={item.name}
+                    goodsPrice={item.price}
+                  />
+                ))}
             </div>
           </div>
           <button className="relatedArrow" onClick={this.clickRightArrow}>

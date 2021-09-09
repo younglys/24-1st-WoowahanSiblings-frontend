@@ -5,22 +5,51 @@ class CartPut extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num: 1,
+      product_id: 1,
+      quantity: 1,
     };
   }
 
-  clickDown = e => {
-    this.state.num > 1 && this.setState({ num: this.state.num - 1 });
+  clickDown = () => {
+    this.state.quantity > 1 &&
+      this.setState({ quantity: this.state.quantity - 1 });
   };
 
-  clickUp = e => {
-    this.setState(state => {
-      return { num: state.num + 1 };
+  clickUp = () => {
+    this.setState(() => {
+      return {
+        quantity: this.state.quantity + 1,
+      };
     });
+  };
+
+  handleCart = () => {
+    this.setState({
+      product_id: this.props.data.id,
+    });
+    const { product_id, quantity } = this.state;
+
+    fetch("http://10.58.0.43:8000/orders/carts", {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: product_id,
+        quantity: quantity,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.Authorization) {
+          localStorage.getItem("token", result.Authorization);
+          this.props.history.push("cart");
+        } else if (result.message === "UNAUTHORIZED") {
+          alert("로그인 먼저 해주세요.");
+        }
+      });
   };
 
   render() {
     const {
+      id,
       name,
       price,
       discount,
@@ -36,7 +65,7 @@ class CartPut extends Component {
       menu,
       image_list,
       allergy_list,
-    } = this.props;
+    } = this.props.data;
 
     return (
       <div className="cartPut">
@@ -125,8 +154,22 @@ class CartPut extends Component {
                   <button className="amountMinus" onClick={this.clickDown}>
                     <i className="fas fa-minus" />
                   </button>
-                  <span className="amountValue">{this.state.num}</span>
-                  <button className="amountPlus" onClick={this.clickUp}>
+                  <span className="amountValue">{this.state.quantity}</span>
+                  <button
+                    className="amountPlus"
+                    onClick={() =>
+                      this.setState(state => {
+                        return {
+                          quantity: state.quantity + 1,
+                          total: (
+                            this.props.price *
+                            (1 - this.props.discount) *
+                            this.state.quantity
+                          ).toLocaleString(),
+                        };
+                      })
+                    }
+                  >
                     <i className="fas fa-plus" />
                   </button>
                 </div>
@@ -139,7 +182,11 @@ class CartPut extends Component {
               <span className="text">총 상품 금액 :</span>
               <p className="orderPrice">
                 <span className="price">
-                  {(price * (1 - discount) * this.state.num).toLocaleString()}
+                  {(
+                    price *
+                    (1 - discount) *
+                    this.state.quantity
+                  ).toLocaleString()}
                 </span>
                 <span className="won">원</span>
               </p>
@@ -154,7 +201,9 @@ class CartPut extends Component {
             <button type="button" className="restock">
               재입고 알림
             </button>
-            <button className="toCart">장바구니 담기</button>
+            <button className="toCart" onClick={this.handleCart}>
+              장바구니 담기
+            </button>
           </div>
         </div>
       </div>
