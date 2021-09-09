@@ -197,24 +197,31 @@ class SignUp extends Component {
               <tbody>
                 <tr>
                   <th className="requiredCategory">아이디</th>
-                  <td>
-                    <input
-                      onClick={this.handleShowInputCondition}
-                      onChange={this.handleIdPassCondition}
-                      type="text"
-                      name="id"
-                      autoComplete="off"
-                      placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
-                    />
-                    <button type="button" onClick={this.checkDuplicationId}>
-                      중복확인
-                    </button>
+                  <td className="conditionContainer">
+                    <div>
+                      <input
+                        onClick={this.handleShowInputCondition}
+                        onChange={this.handleIdPassCondition}
+                        type="text"
+                        name="id"
+                        autoComplete="off"
+                        placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
+                      />
+                      <button type="button" onClick={this.checkDuplicationId}>
+                        중복확인
+                      </button>
+                    </div>
                     {isIdShowing && (
                       <div className="inputConditionWrapper">
                         <p
                           className="inputCondition"
                           style={{
-                            color: isIdColor === false ? "red" : "green",
+                            color:
+                              this.state.id === ""
+                                ? "black"
+                                : isIdColor === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           6자 이상의 영문 혹은 영문과 숫자를 조합(영문부터 작성)
@@ -223,7 +230,11 @@ class SignUp extends Component {
                           className="inputCondition"
                           style={{
                             color:
-                              this.state.usableId === false ? "red" : "green",
+                              this.state.id === ""
+                                ? "black"
+                                : this.state.usableId === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           아이디 중복확인
@@ -234,7 +245,7 @@ class SignUp extends Component {
                 </tr>
                 <tr>
                   <th className="requiredCategory">비밀번호</th>
-                  <td>
+                  <td className="conditionContainer">
                     <input
                       onClick={this.handleShowPwInputCondition}
                       onChange={this.handlePwPassCondition}
@@ -248,7 +259,12 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwColor === false ? "red" : "green",
+                            color:
+                              this.state.password === ""
+                                ? "black"
+                                : isPwColor === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           10자 이상 입력
@@ -256,7 +272,12 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwCheckColor === false ? "red" : "green",
+                            color:
+                              this.state.password === ""
+                                ? "black"
+                                : isPwCheckColor === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           영문 대소문자/숫자/특수문자(공백 제외)만 허용하며, 2개
@@ -265,7 +286,12 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwCheckColor === false ? "red" : "green",
+                            color:
+                              this.state.password === ""
+                                ? "black"
+                                : isPwCheckColor === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           동일한 숫자 3개 이상 연속 사용 불가
@@ -276,7 +302,7 @@ class SignUp extends Component {
                 </tr>
                 <tr>
                   <th className="requiredCategory">비밀번호확인</th>
-                  <td>
+                  <td className="conditionContainer">
                     <input
                       onClick={this.handleShowPwCheckInputCondition}
                       onChange={this.handlePwCheck}
@@ -290,7 +316,12 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwReCheckColor === false ? "red" : "green",
+                            color:
+                              this.state.rePassword === ""
+                                ? "black"
+                                : isPwReCheckColor === false
+                                ? "red"
+                                : "green",
                           }}
                         >
                           동일한 비밀번호를 입력해주세요.
