@@ -332,7 +332,7 @@ class SignUp extends Component {
                 </tr>
                 <tr>
                   <th className="requiredCategory">주소</th>
-                  <td>
+                  <td className="address">
                     <input
                       type="text"
                       name="address"
@@ -420,7 +420,7 @@ class SignUp extends Component {
                 </tr>
                 <tr>
                   <th>추가입력 사항</th>
-                  <td>
+                  <td className="inputOption">
                     <div className="options">
                       <div className="additionOptions">
                         <input
@@ -451,7 +451,7 @@ class SignUp extends Component {
                     <div>
                       <input
                         type="text"
-                        placeholder="추천인 아이디를 입력해주세요."
+                        placeholder="추천인 아이디 또는 참여 이벤트명을 입력해주세요."
                       />
                     </div>
                     <div>
@@ -476,7 +476,7 @@ class SignUp extends Component {
                 </tr>
                 <tr className="accessTerms">
                   <th className="requiredCategory">이용약관동의</th>
-                  <td>
+                  <td className="termsConditions">
                     <div className="terms">
                       <label>
                         <button
