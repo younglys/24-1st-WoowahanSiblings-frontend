@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Nav from "../../components/Nav/Nav";
 import AdList from "./AdList";
 import ProductList from "./ProductList";
 import Benefit from "./Benefit";
@@ -63,6 +64,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
+        <Nav />
         {this.state.isLoading ? (
           <div className="loader">
             <svg
