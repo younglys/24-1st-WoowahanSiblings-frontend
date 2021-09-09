@@ -115,17 +115,23 @@ class SignUp extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: this.state.id }),
-    }).then(res => {
-      console.log("결과: ", res);
-      if (res.status === 200) {
-        alert("현재 사용 가능한 아이디 입니다.");
-        this.setState({ usableId: true });
-      } else if (res.status === 401) {
-        // (ERROR)res.message: EXIST_USER
-        alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
-      }
-    });
+      body: JSON.stringify({ account_name: this.state.id }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log("결과: ", res);
+        if (res.message === "POSSIBLE") {
+          // res.status === 200
+          alert("현재 사용 가능한 아이디입니다.");
+          this.setState({ usableId: true });
+          console.log("usableId: ", this.state.usableId);
+          // res.message: POSSIBLE
+        } else if (res.message === "EXIST_USER") {
+          // res.status === 401
+          alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+          console.log("usableId: ", this.state.usableId);
+        }
+      });
   };
 
   handleSignup = () => {
