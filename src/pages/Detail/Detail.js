@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav from "../../components/Nav/Nav";
 import CartPut from "./Components/CartPut";
 import Related from "./Components/Related";
 import GoodsView from "./Components/GoodsView";
@@ -29,7 +28,6 @@ class Detail extends Component {
 
     return (
       <div className="detail">
-        <Nav />
         <CartPut data={data} />
         <Related related={data.selected_products} />
         <GoodsView />
