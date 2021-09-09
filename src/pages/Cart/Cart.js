@@ -44,6 +44,7 @@ class Cart extends Component {
                     imgSrc={item.product_img}
                     goodsName={item.name}
                     goodsPrice={item.price}
+                    goodsQuantity={item.quantity}
                   />
                 );
               })}
