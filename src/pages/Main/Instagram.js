@@ -48,11 +48,13 @@ class Instagram extends Component {
   };
 
   render() {
+    const { title, product } = this.props;
+    const { slideCount } = this.state;
     return (
       <>
         <div className="instagramList">
           <div className="instagramStatus">
-            <h3>{this.props.title}</h3>
+            <h3>{title}</h3>
           </div>
         </div>
         <div className="instagramlistGoods">
@@ -66,7 +68,7 @@ class Instagram extends Component {
                   transform: `translateX(${this.state.slideCount}px)`,
                 }}
               >
-                {this.props.product.map((productListData, idx) => {
+                {product.map((productListData, idx) => {
                   return (
                     <li key={idx}>
                       <div>
@@ -76,7 +78,7 @@ class Instagram extends Component {
                   );
                 })}
               </ul>
-              {this.state.slideCount !== this.slideEnd && (
+              {slideCount !== this.slideEnd && (
                 <div
                   className="instagramproductLeftButton"
                   onClick={this.handleNextBtn}
@@ -84,7 +86,7 @@ class Instagram extends Component {
                   <img src="/images/leftbuttonx2.webp" />
                 </div>
               )}
-              {!!this.state.slideCount && (
+              {!!slideCount && (
                 <div
                   className="instagramproductRightButton"
                   onClick={this.handlePrevBtn}

@@ -48,6 +48,8 @@ class ButtonProductList extends Component {
   };
 
   render() {
+    const { title, productList } = this.props;
+    const { slideCount } = this.state;
     return (
       <>
         <div className="productList">
@@ -72,7 +74,7 @@ class ButtonProductList extends Component {
               transform: `translateX(${this.state.slideCount}px)`,
             }}
           >
-            {this.props.productList.map(productListData => {
+            {productList.map(productListData => {
               return (
                 <li>
                   <img src={productListData.image_list} />
@@ -82,12 +84,12 @@ class ButtonProductList extends Component {
               );
             })}
           </ul>
-          {this.state.slideCount !== this.slideEnd && (
+          {slideCount !== this.slideEnd && (
             <div className="productLeftButton" onClick={this.handleNextBtn}>
               <img src="/images/leftbuttonx2.webp" />
             </div>
           )}
-          {!!this.state.slideCount && (
+          {!!slideCount && (
             <div className="productRightButton" onClick={this.handlePrevBtn}>
               <img src="/images/rightbuttonx2.webp" />
             </div>

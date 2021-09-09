@@ -3,16 +3,17 @@ import { withRouter, Link } from "react-router-dom";
 
 class Benefit extends Component {
   render() {
+    const { title, benefitList } = this.props;
     return (
       <div className="benefit">
         <div className="benefitGoods">
           <h3>
-            <a href="#">{this.props.title}</a>
+            <a href="#">{title}</a>
           </h3>
         </div>
         <div className="benefitList">
           <ul className="benefitListImg">
-            {this.props.benefitList.map(benefit => {
+            {benefitList.map(benefit => {
               return (
                 <li key={benefit.id}>
                   <Link to="/detail" className="thumbGoods">

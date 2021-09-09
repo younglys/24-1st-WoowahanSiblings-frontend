@@ -22,7 +22,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    fetch("http://10.58.4.207:8000/users/login", {
+    fetch("http://10.58.2.124:8000/users/login", {
       method: "POST",
       body: JSON.stringify({
         account_name: this.state.id,

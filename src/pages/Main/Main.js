@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loading from "./Loading";
 import AdList from "./AdList";
 import ProductList from "./ProductList";
 import Benefit from "./Benefit";
@@ -6,6 +7,7 @@ import CenterAdd from "./CenterAdd";
 import ButtonProductList from "./ButtonProductList";
 import KulryList from "./KulryList";
 import Instagram from "./Instagram";
+import Nav from "../../components/Nav/Nav";
 import "./Main.scss";
 
 class Main extends Component {
@@ -27,7 +29,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.0.49:8000/products/lists", {
+    fetch("http://10.58.2.124:8000/products/lists", {
       method: "GET",
     })
       .then(res => res.json())
@@ -56,95 +58,87 @@ class Main extends Component {
       });
   }
 
-  componentDidUpdate() {
-    console.log("서버");
-  }
-
   render() {
+    const {
+      productList,
+      benefitList,
+      noticList,
+      buttonList,
+      hotProductList,
+      giftProductList,
+      campingProductList,
+      yearProductList,
+      kulryList,
+      instagram,
+      isLoading,
+    } = this.state;
     return (
       <div className="main">
-        {this.state.isLoading ? (
-          <div className="loader">
-            <svg
-              className="spinner"
-              width="65px"
-              height="65px"
-              viewBox="0 0 66 66"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                className="path"
-                fill="none"
-                strokeWidth="6"
-                strokeLinecap="round"
-                cx="33"
-                cy="33"
-                r="30"
-              ></circle>
-            </svg>
-          </div>
+        <Nav />
+        {isLoading ? (
+          <Loading />
         ) : (
           <>
             <AdList />
             <ProductList
-              productList={this.state.productList}
+              productList={productList}
               datalength={10}
               title={"이 상품 어때요?"}
             />
             <Benefit
-              benefitList={this.state.benefitList}
+              benefitList={benefitList}
               datalength={3}
               title={"특가/혜택"}
             />
             <ProductList
-              productList={this.state.noticList}
+              productList={noticList}
               datalength={10}
               title={"놓치면 후회할 가격"}
             />
             <CenterAdd />
             <ButtonProductList
-              productList={this.state.buttonList}
+              productList={buttonList}
               datalength={10}
               title={"MD의 추천"}
             />
             <CenterAdd />
             <ProductList
-              productList={this.state.hotProductList}
+              productList={hotProductList}
               datalength={10}
               title={"지금 가장 핫한 상품"}
             />
             <div style={{ backgroundColor: "#f7f7f7" }}>
               <ProductList
-                productList={this.state.giftProductList}
+                productList={giftProductList}
                 datalength={10}
                 title={"추석 선물 추천, 뷰티 최대 40% 할인"}
               />
             </div>
             <ProductList
-              productList={this.state.giftProductList}
+              productList={giftProductList}
               datalength={10}
               title={"마감세일"}
             />
             <div style={{ backgroundColor: "#f7f7f7" }}>
               <ProductList
-                productList={this.state.campingProductList}
+                productList={campingProductList}
                 datalength={10}
                 title={"365일 최저가 도전"}
               />
             </div>
             <ProductList
-              productList={this.state.yearProductList}
+              productList={yearProductList}
               datalength={10}
               title={"설레는 캠핑"}
             />
 
             <KulryList
-              productList={this.state.kulryList}
+              productList={kulryList}
               datalength={10}
               title={"컬리의 레시피"}
             />
 
-            {this.state.instagram.map((productWhy, index) => {
+            {instagram.map((productWhy, index) => {
               return (
                 <Instagram
                   title={productWhy.title}

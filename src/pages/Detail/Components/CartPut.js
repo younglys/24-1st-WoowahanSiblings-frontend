@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./CartPut.scss";
 
 class CartPut extends Component {
@@ -6,6 +7,7 @@ class CartPut extends Component {
     super(props);
     this.state = {
       num: 1,
+      isLogin: false,
     };
   }
 
@@ -17,6 +19,20 @@ class CartPut extends Component {
     this.setState(state => {
       return { num: state.num + 1 };
     });
+  };
+
+  handleCart = () => {
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/cart");
+      this.setState({
+        isLogin: true,
+      });
+    } else {
+      this.props.history.push("/login");
+      this.setState({
+        isLogin: false,
+      });
+    }
   };
 
   render() {
@@ -154,7 +170,9 @@ class CartPut extends Component {
             <button type="button" className="restock">
               재입고 알림
             </button>
-            <button className="toCart">장바구니 담기</button>
+            <button className="toCart" onClick={this.handleCart}>
+              장바구니 담기
+            </button>
           </div>
         </div>
       </div>
@@ -162,4 +180,4 @@ class CartPut extends Component {
   }
 }
 
-export default CartPut;
+export default withRouter(CartPut);

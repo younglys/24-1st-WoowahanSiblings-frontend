@@ -52,6 +52,7 @@ class AdList extends Component {
   }
 
   render() {
+    const { adImg, buttonDisplay } = this.state;
     return (
       <div
         className="adList"
@@ -62,15 +63,15 @@ class AdList extends Component {
           <div
             className="leftArrow"
             onClick={this.imgChangeLeft}
-            style={{ display: this.state.buttonDisplay }}
+            style={{ display: buttonDisplay }}
           >
             <img src="/images/leftbutton.webp" />
           </div>
-          <img alt="ad" src={`./images/${this.state.adImg}.webp`} />
+          <img alt="ad" src={`./images/${adImg}.webp`} />
           <div
             className="rightArrow"
             onClick={this.imgChangeRight}
-            style={{ display: this.state.buttonDisplay }}
+            style={{ display: buttonDisplay }}
           >
             <img src="/images/rightbutton.webp" />
           </div>
