@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+import { SIGN_UP_API, SIGN_UP_CHECK_API } from "../../config";
 import "./SignUp.scss";
 
 class SignUp extends Component {
@@ -109,7 +110,7 @@ class SignUp extends Component {
 
   checkDuplicationId = e => {
     e.preventDefault();
-    fetch("http://10.58.2.124:8000/users/signup/duplication", {
+    fetch(SIGN_UP_CHECK_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,7 +141,7 @@ class SignUp extends Component {
       birthMonth,
       birthDate,
     } = this.state;
-    fetch("http://10.58.2.124:8000/users/signup", {
+    fetch(SIGN_UP_API, {
       method: "POST",
       body: JSON.stringify({
         account_name: id,
@@ -165,10 +166,10 @@ class SignUp extends Component {
             "가입이 불가합니다. 이메일을 형식에 맞게 다시 입력해주세요.",
         };
         alert(messages[res.message]);
+        console.log(res);
 
-        if (res.Token) {
-          localStorage.setItem("token", res.Token);
-          this.props.history.push("/");
+        if (res.message === "SUCCESS") {
+          this.props.history.push("/login");
         }
       });
   };
@@ -255,7 +256,7 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwCheckColor === false ? "red" : "blue",
+                            color: isPwCheckColor === false ? "red" : "green",
                           }}
                         >
                           영문 대소문자/숫자/특수문자(공백 제외)만 허용하며, 2개
@@ -264,7 +265,7 @@ class SignUp extends Component {
                         <p
                           className="inputCondition"
                           style={{
-                            color: isPwCheckColor === false ? "red" : "blue",
+                            color: isPwCheckColor === false ? "red" : "green",
                           }}
                         >
                           동일한 숫자 3개 이상 연속 사용 불가
@@ -605,4 +606,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

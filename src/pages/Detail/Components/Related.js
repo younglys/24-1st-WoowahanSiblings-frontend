@@ -35,7 +35,7 @@ class GoodsRelatedList extends Component {
 
   clickRightArrow = () => {
     const { currentOffsetX } = this.state;
-    const itemLength = this.props.selected_products.length;
+    const itemLength = this.props.related.length;
     if (currentOffsetX > (itemLength - 6) * -RELATED_WIDTH) {
       this.setState({
         currentOffsetX: currentOffsetX - RELATED_WIDTH,

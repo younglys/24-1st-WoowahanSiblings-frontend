@@ -12,6 +12,7 @@ class TopLayout extends Component {
   handleLogin = () => {
     localStorage.removeItem("token");
     this.setState({ loginText: "로그인" });
+    this.props.history.push("/");
   };
 
   render() {
@@ -25,7 +26,9 @@ class TopLayout extends Component {
         </div>
         <ul className="signUpList">
           <li className="signUpListText">
-            <Link className="signUpColor">회원가입</Link>
+            <Link to="/signup" className="signUpColor">
+              회원가입
+            </Link>
           </li>
           <li className="signUpListLine">
             <div />
