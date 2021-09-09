@@ -7,38 +7,52 @@ class CartPut extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num: 1,
       isLogin: false,
+      product_id: 1,
+      quantity: 1,
     };
   }
 
-  clickDown = e => {
-    this.state.num > 1 && this.setState({ num: this.state.num - 1 });
+  clickDown = () => {
+    this.state.quantity > 1 &&
+      this.setState({ quantity: this.state.quantity - 1 });
   };
 
-  clickUp = e => {
-    this.setState(state => {
-      return { num: state.num + 1 };
+  clickUp = () => {
+    this.setState(() => {
+      return {
+        quantity: this.state.quantity + 1,
+      };
     });
   };
 
   handleCart = () => {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/cart");
-      this.setState({
-        isLogin: true,
-      });
-    } else {
+    if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
       alert("로그인을 해주세요 !");
       this.setState({
         isLogin: false,
       });
+
+      return;
     }
+
+    fetch("http://10.58.0.43:8000/orders/carts", {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: this.props.data.id,
+        quantity: this.state.quantity,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        this.props.history.push("/cart");
+      });
   };
 
   render() {
     const {
+      id,
       name,
       price,
       discount,
@@ -54,7 +68,7 @@ class CartPut extends Component {
       menu,
       image_list,
       allergy_list,
-    } = this.props;
+    } = this.props.data;
 
     return (
       <div className="cartPut">
@@ -143,8 +157,22 @@ class CartPut extends Component {
                   <button className="amountMinus" onClick={this.clickDown}>
                     <i className="fas fa-minus" />
                   </button>
-                  <span className="amountValue">{this.state.num}</span>
-                  <button className="amountPlus" onClick={this.clickUp}>
+                  <span className="amountValue">{this.state.quantity}</span>
+                  <button
+                    className="amountPlus"
+                    onClick={() =>
+                      this.setState(state => {
+                        return {
+                          quantity: state.quantity + 1,
+                          total: (
+                            this.props.price *
+                            (1 - this.props.discount) *
+                            this.state.quantity
+                          ).toLocaleString(),
+                        };
+                      })
+                    }
+                  >
                     <i className="fas fa-plus" />
                   </button>
                 </div>
@@ -157,7 +185,11 @@ class CartPut extends Component {
               <span className="text">총 상품 금액 :</span>
               <p className="orderPrice">
                 <span className="price">
-                  {(price * (1 - discount) * this.state.num).toLocaleString()}
+                  {(
+                    price *
+                    (1 - discount) *
+                    this.state.quantity
+                  ).toLocaleString()}
                 </span>
                 <span className="won">원</span>
               </p>

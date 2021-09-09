@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RelatedItem from "./RelatedItem";
+import { PRODUCT_API } from "../../../config";
 import "./Related.scss";
 
 class GoodsRelatedList extends Component {
@@ -12,11 +13,11 @@ class GoodsRelatedList extends Component {
   }
 
   componentDidMount() {
-    fetch(`/data/relatedItem.json`)
+    fetch(`${PRODUCT_API}${this.props.match.params.productId}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          relatedItem: res,
+          data: res,
         });
       });
   }
@@ -32,10 +33,9 @@ class GoodsRelatedList extends Component {
   };
 
   clickRightArrow = () => {
-    const { currentOffsetX, relatedItem } = this.state;
-
-    if (currentOffsetX > (relatedItem.length - 6) * -RELATED_WIDTH) {
-      console.log(RELATED_WIDTH);
+    const { currentOffsetX } = this.state;
+    const itemLength = this.props.selected_products.length;
+    if (currentOffsetX > (itemLength - 6) * -RELATED_WIDTH) {
       this.setState({
         currentOffsetX: currentOffsetX - RELATED_WIDTH,
       });
@@ -43,15 +43,7 @@ class GoodsRelatedList extends Component {
   };
 
   render() {
-    const { relatedItem } = this.state;
-    const relatedInfo = relatedItem.map((item, idx) => (
-      <RelatedItem
-        key={idx}
-        imgSrc={item.imgSrc}
-        goodsName={item.goodsName}
-        goodsPrice={item.goodsPrice}
-      />
-    ));
+    const relatedItem = this.props.related;
 
     return (
       <div className="goodsRelated">
@@ -70,7 +62,15 @@ class GoodsRelatedList extends Component {
                 transform: `translateX(${this.state.currentOffsetX}px)`,
               }}
             >
-              {relatedInfo}
+              {relatedItem &&
+                relatedItem.map((item, idx) => (
+                  <RelatedItem
+                    key={idx}
+                    imgSrc={item.image_url}
+                    goodsName={item.name}
+                    goodsPrice={item.price}
+                  />
+                ))}
             </div>
           </div>
           <button className="relatedArrow" onClick={this.clickRightArrow}>
