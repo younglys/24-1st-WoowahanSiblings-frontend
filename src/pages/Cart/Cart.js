@@ -31,7 +31,7 @@ class Cart extends Component {
 
   render() {
     const listLength = this.state.cartList.length;
-    console.log(listLength);
+
     return (
       <div className="cart">
         <div className="titPage">장바구니</div>
