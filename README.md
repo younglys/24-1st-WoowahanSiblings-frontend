@@ -8,7 +8,7 @@
 
 ## 👓 프로젝트 시연 영상<br>
 
-[![시연 영상 바로가기](https://img.youtube.com/vi/DxWUIC6c57E/0.jpg)](https://www.youtube.com/watch?v=DxWUIC6c57E)
+[![시연 영상 바로가기](https://img.youtube.com/vi/DxWUIC6c57E/0.jpg)](https://www.youtube.com/watch?v=DxWUIC6c57E)<br>
 위의 이미지를 클릭하시면 해당 영상으로 이동하여 확인하실 수 있습니다.
 
 ## 🔥 프로젝트 기간<br>
